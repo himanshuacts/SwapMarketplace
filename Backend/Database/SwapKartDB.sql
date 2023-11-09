@@ -5,6 +5,7 @@
 */
 
 drop database if exists swapkart;
+create database swapkart;
 
 /*
     Date: 09/11/2023
