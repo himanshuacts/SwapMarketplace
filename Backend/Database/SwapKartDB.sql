@@ -1,6 +1,6 @@
 /*
     Date: 08/11/2023
-    Author: Himanshu Wakodikar
+    Author: Himanshu
     Purpose: Initialising SwapKart Database
 */
 
