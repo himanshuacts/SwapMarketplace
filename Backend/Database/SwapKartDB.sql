@@ -3,3 +3,5 @@
     Author: Himanshu Wakodikar
     Purpose: Initialising SwapKart Database
 */
+
+drop database if exists swapkart;
