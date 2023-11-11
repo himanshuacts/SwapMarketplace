@@ -6,7 +6,7 @@
 
 drop database if exists swapkart;
 create database swapkart;
-show databases;
+use swapkart;
 
 /*
     Date: 09/11/2023
@@ -14,18 +14,20 @@ show databases;
     Purpose: testing git
 */
 
-/*
-    Date: 09/11/2023
-    Author: Dipak Gore
-    Purpose: testing git
-*/
+
 
 /*
     Date: 09/11/2023
     Author: Shreyas Sonawane
     Purpose: testing git
 */
-use swapkart;
+
+/*
+    Date: 11/11/2023
+    Author: Dipak Gore
+    Purpose: State table contain the data of 29 states.
+*/
+
 create table state (state_id int primary key,state_name varchar(25));
 insert into state values(01,'Andhra Pradesh');
 insert into state values(02,'Arunachal Pradesh');
@@ -55,7 +57,7 @@ insert into state values(03,'Assam'),(04,'Bihar'),
 (27,'Uttar Pradesh'),
 (28,'Uttarakhand'),
 (29,'West Bengal');
-SELECT*FROM state;
+
 
 
 
