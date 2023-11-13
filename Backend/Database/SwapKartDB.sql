@@ -60,13 +60,19 @@ insert into state values(03,'ASSAM'),(04,'BIHAR'),
 (30,'UNION TERRITORY');
 select * from state;
 
+/*
+    Date: 13/11/2023
+    Author: Vishwajeet Singh
+    Purpose: city table containing the data of cities of 29 states and UT.
+*/
+
 create table city (city_id int primary key,city_name varchar(30),state_id int );
 desc city;
 insert into city values(01,'VISHAKHAPATNAM',01);
 insert into city values(02,'VIJAYAWADA',01),
 (03,'GUNTUR',01),
 (04,'NELLORE',01),
-(05,'KURNOO'L,01),
+(05,'KURNOO',01),
 (06,'BORDUMSA',02),
 (07,'BUBANG',02),
 (08,'GANDHIGRAM',02),
@@ -178,34 +184,43 @@ insert into city values(02,'VIJAYAWADA',01),
 (114,'JORETHANG',23),
 (115,'RHENAK',23),
 (116,'CHENNAI',24),
-(117,KANCHIPURAM,24),
-(118,VELLORE,24),
-(119,THIRUVALLUR,24),
-(120,SALEM,24),
-(121,HYDERABAD,25),
-(122,WARANGAL,25),
-(123,NIZAMABAD,25),
-(124,KARIMNAGAR,25),
-(125,RAMAGUNDAM,25),
-(126,AGARTALA,26),
-(127,DHARMANAGAR,26),
-(128,UDAIPUR,26),
-(129,KAILASAHAR,26),
-(130,BISHALGARH,26),
-(131,LUCKNOW,27),
-(132,KANPUR,27),
-(133,GHAZIABAD,27),
-(134,AGRA,27),
-(135,MEERUT,27),
-(136,DEHRADUN,28),
-(137,HARIDWAR,28),
-(138,RUDRAPUR,28),
-(139,KASHIPUR,28),
-(140,ROORKEE,28),
-(141,KOLKATA ,29),
-(142,HOWRAH,29),
-(143,DURGAPUR,29),
-(144,ASANSOL,29),
-(145,SILIGURI,29);
+(117,'KANCHIPURAM',24),
+(118,'VELLORE',24),
+(119,'THIRUVALLUR',24),
+(120,'SALEM',24),
+(121,'HYDERABAD',25),
+(122,'WARANGAL',25),
+(123,'NIZAMABAD',25),
+(124,'KARIMNAGARRAMAGUNDAM',25),
+(126,'AGARTALA',26),
+(127,'DHARMANAGAR',26),
+(128,'UDAIPUR',26),
+(129,'KAILASAHAR',26),
+(130,'BISHALGARH',26),
+(131,'LUCKNOW',27),
+(132,'KANPUR',27),
+(133,'GHAZIABAD',27),
+(134,'AGRA',27),
+(135,'MEERUT',27),
+(136,'DEHRADUN',28),
+(137,'HARIDWAR',28),
+(138,'RUDRAPUR',28),
+(139,'KASHIPUR',28),
+(140,'ROORKEE',28),
+(141,'KOLKATA',29),
+(142,'HOWRAH',29),
+(143,'DURGAPUR',29),
+(144,'ASANSOL',29),
+(145,'SILIGURI',29),
+(146,'PUDUCHERRY',30),
+(147,'LAKSHADWEEP',30),
+(148,'DELHI',30),
+(149,'CHANDIGARH',30),
+(150,'DADRA AND NAGAR HAVELI',30),
+(151,'ANDAMAN AND NICOBAR ISLANDS',30);
+
 SELECT * from city;
 
+alter table city
+add foreign key (state_id) references state(state_id);
+desc city;
