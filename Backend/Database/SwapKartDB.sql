@@ -29,37 +29,35 @@ use swapkart;
 */
 
 create table state (state_id int primary key,state_name varchar(25));
-insert into state values(01,'Andhra Pradesh');
-insert into state values(02,'Arunachal Pradesh');
-insert into state values(03,'Assam'),(04,'Bihar'),
-(05,'Chhattisgarh'),
-(06,'Goa'),
-(07,'Gujarat'),
-(08,'Haryana'),
-(09,'Himachal Pradesh'),
-(10,'Jammu and Kashmir'),
-(11,'Jharkhand'),
-(12,'Karnataka'),
-(13,'Kerala'),
-(14,'Madhya Pradesh'),
-(15,'Maharashtra'),
-(16,'Manipur'),
-(17,'Meghalaya'),
-(18,'Mizoram'),
-(19,'Nagaland'),
-(20,'Odisha'),
-(21,'Punjab'),
-(22,'Rajasthan'),
-(23,'Sikkim'),
-(24,'Tamil Nadu'),
-(25,'Telangana'),
-(26,'Tripura'),
-(27,'Uttar Pradesh'),
-(28,'Uttarakhand'),
-(29,'West Bengal');
-
-
-
+insert into state values(01,'ANDHRA PRADESH');
+insert into state values(02,'ARUNACHAL PRADESH');
+insert into state values(03,'ASSAM'),(04,'BIHAR'),
+(05,'CHHATTISGARH'),
+(06,'GOA'),
+(07,'GUJARAT'),
+(08,'HARYANA'),
+(09,'HIMACHAL PRADESH'),
+(10,'JAMMU AND KASHMIR'),
+(11,'JHARKHAND'),
+(12,'KARNATAKA'),
+(13,'KERALA'),
+(14,'MADHYA PRADESH'),
+(15,'MAHARASHTRA'),
+(16,'MANIPUR'),
+(17,'MEGHALAYA'),
+(18,'MIZORAM'),
+(19,'NAGALAND'),
+(20,'ODISHA'),
+(21,'PUNJAB'),
+(22,'RAJASTHAN'),
+(23,'SIKKIM'),
+(24,'TAMIL NADU'),
+(25,'TELANGANA'),
+(26,'TRIPURA'),
+(27,'UTTAR PRADESH'),
+(28,'UTTARAKHAND'),
+(29,'WEST BENGAL')
+(30,'UNION TERRITORY');
 
 
 
