@@ -58,7 +58,7 @@ insert into state values(03,'ASSAM'),(04,'BIHAR'),
 (28,'UTTARAKHAND'),
 (29,'WEST BENGAL'),
 (30,'UNION TERRITORY');
-
+select * from state;
 
 
 
