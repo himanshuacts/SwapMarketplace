@@ -56,9 +56,8 @@ insert into state values(03,'ASSAM'),(04,'BIHAR'),
 (26,'TRIPURA'),
 (27,'UTTAR PRADESH'),
 (28,'UTTARAKHAND'),
-(29,'WEST BENGAL')
+(29,'WEST BENGAL'),
 (30,'UNION TERRITORY');
-
 
 
 
