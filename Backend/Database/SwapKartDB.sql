@@ -27,7 +27,7 @@ use swapkart;
     Author: Dipak Gore
     Purpose: State table contain the data of 29 states.
 */
-
+/*adding state table */
 create table state (state_id int primary key,state_name varchar(25));
 insert into state values(01,'ANDHRA PRADESH');
 insert into state values(02,'ARUNACHAL PRADESH');
