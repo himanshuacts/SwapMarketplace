@@ -9,20 +9,6 @@ create database swapkart;
 use swapkart;
 
 /*
-    Date: 09/11/2023
-    Author: Vishwajeet Singh
-    Purpose: testing git
-*/
-
-
-
-/*
-    Date: 09/11/2023
-    Author: Shreyas Sonawane
-    Purpose: testing git
-*/
-
-/*
     Date: 11/11/2023
     Author: Dipak Gore
     Purpose: State table contain the data of 29 states.
@@ -222,3 +208,22 @@ insert into city values(02,'VIJAYAWADA',01),
 
 alter table city
 add foreign key (state_id) references state(state_id);
+
+/*
+    Date: 14/11/2023
+    Author: Himanshu Wakodikar
+    Purpose: User table contain the data of user when they register
+*/
+
+create table user
+(
+    user_id int primary key auto_increment,
+    first_name varchar(20),
+    last_name varchar(20),
+    email_id varchar(50),
+    password varchar(12),
+    mobile bigint,
+    rating int,
+    city_id int,
+    foreign key (city_id) references city(city_id)
+);
