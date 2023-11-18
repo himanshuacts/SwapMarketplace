@@ -227,3 +227,45 @@ create table user
     city_id int,
     foreign key (city_id) references city(city_id)
 );
+
+/*
+    Date: 18/11/2023
+    Author: Arsharaj Chauhan
+    Purpose: Creating category table to store different product categories
+*/
+create table category 
+(
+    category_id int primary key,
+    category_name varchar(15),
+    constraint check_category_length check (length(category_name) <= 15)
+);
+insert into category values 
+(1, "Electronics"),
+(2, "Fashions"),
+(3, "Sports"),
+(4, "Fitness"),
+(5, "Household"),
+(6, "Books");
+
+/*
+    Date: 18/11/2023
+    Author: Arsharaj Chauhan
+    Purpose: Creating user_product table with specific attributes as well as constraints
+*/
+create table user_product
+(
+    product_id int auto_increment unique,
+    product_name varchar(25),
+    product_description varchar(150),
+    price int,
+    first_image blob,
+    second_image blob,
+    third_image blob,
+    posted_date date,
+    category_id int,
+    user_id int,
+    primary key (product_id, user_id),
+    foreign key (category_id) references category(category_id),
+    foreign key (user_id) references user(user_id),
+    constraint check_price check (price >= 0)
+);
