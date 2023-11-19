@@ -276,3 +276,15 @@ create table user_product
         product_brand <= 50
     )
 );
+
+/*
+    Date: 19/11/2023
+    Author: Shreyas Sonawane
+    Purpose: Creating universal_product table with specific attributes as well as constraints
+*/
+create table universal_product
+(
+    universal_product_id int primary key auto_increment,
+    product_id int,
+    foreign key (product_id) references user_product(product_id)
+);
