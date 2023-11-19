@@ -241,7 +241,7 @@ create table category
 );
 insert into category values 
 (1, "Electronics"),
-(2, "Fashions"),
+(2, "Fashion"),
 (3, "Sports"),
 (4, "Fitness"),
 (5, "Household"),
