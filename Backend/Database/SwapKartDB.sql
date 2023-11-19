@@ -220,7 +220,7 @@ create table user
     user_id int primary key auto_increment,
     first_name varchar(20),
     last_name varchar(20),
-    email_id varchar(50),
+    email_id varchar(50) unique,
     password varchar(12),
     mobile bigint,
     rating int,
