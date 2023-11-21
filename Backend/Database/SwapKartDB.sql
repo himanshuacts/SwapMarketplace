@@ -268,13 +268,7 @@ create table user_product
     primary key (product_id, user_id),
     foreign key (category_id) references category(category_id),
     foreign key (user_id) references user(user_id),
-    constraint check_user_product check
-    (
-        price >= 0 and
-        product_name <= 25 and
-        product_description <= 150 and
-        product_brand <= 50
-    )
+    constraint check_price check (price > 0)
 );
 
 /*
