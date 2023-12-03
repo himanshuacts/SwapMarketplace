@@ -282,3 +282,35 @@ create table universal_product
     product_id int,
     foreign key (product_id) references user_product(product_id)
 );
+
+/*
+    Date: 03/12/2023
+    Author: Shreyas Sonawane
+    Purpose: Altering tables users and products dropping tables state and universal_product
+*/
+
+alter table city drop foreign key city_ibfk_1;
+
+alter table city drop state_id;
+
+drop table state;
+
+alter table user add user_image blob;
+
+drop table universal_product;
+
+create table wishlist
+(
+    user_id int,
+    product_id int
+);
+
+create table swap
+(
+    user_id int,
+    owner_id int
+);
+
+alter table user rename to users;
+
+alter table user_product rename to products;
