@@ -314,3 +314,6 @@ create table swap
 alter table user rename to users;
 
 alter table user_product rename to products;
+
+desc users;
+desc products;
