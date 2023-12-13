@@ -299,12 +299,14 @@ alter table user add user_image blob;
 
 drop table universal_product;
 
+-- This table will be created by forming mant to many relationship between user and product table
 create table wishlist
 (
     user_id int,
     product_id int
 );
 
+-- This table will be created by forming mant to many relationship between wishlist and swap table
 create table swap
 (
     user_id int,
