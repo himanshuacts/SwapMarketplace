@@ -307,10 +307,13 @@ create table wishlist
 );
 
 -- This table will be created by forming mant to many relationship between wishlist and swap table
-create table swap
+create table transaction
 (
     user_id int,
-    owner_id int
+    user_product_id int,
+    owner_id int,
+    owner_product_id int,
+    status boolean
 );
 
 alter table user rename to users;
