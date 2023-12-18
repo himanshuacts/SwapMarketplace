@@ -320,5 +320,10 @@ alter table user rename to users;
 
 alter table user_product rename to products;
 
-desc users;
-desc products;
+create table transaction_history
+(
+    user_id int,
+    user_product_id int,
+    owner_id int,
+    owner_product_id int,
+);
