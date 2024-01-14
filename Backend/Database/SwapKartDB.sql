@@ -327,3 +327,17 @@ create table transaction_history
     owner_id int,
     owner_product_id int,
 );
+
+create table message
+(
+    msg_id int primary key auto_increment,
+    user_id int,
+    owner_id int,
+    user_product_id int,
+    owner_product_id int,
+    role varchar(20),
+    message varchar(300),
+    datetime_stamp DATETIME,
+    foreign key (user_id) references users(user_id),
+    foreign key (owner_id) references users(user_id)
+);
