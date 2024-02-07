@@ -9,4 +9,3 @@ import com.app.entities.Transaction;
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 
 }
-

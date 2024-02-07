@@ -23,7 +23,7 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "category_id")
 	private int categoryId;
-	
-	@Column(name = "category_name", columnDefinition = "VARCHAR(15)")
+
+	@Column(name = "category_name", columnDefinition = "varchar(15)")
 	private String categoryName;
 }

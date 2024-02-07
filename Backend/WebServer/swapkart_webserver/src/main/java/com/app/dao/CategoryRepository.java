@@ -7,5 +7,5 @@ import com.app.entities.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
-}
 
+}

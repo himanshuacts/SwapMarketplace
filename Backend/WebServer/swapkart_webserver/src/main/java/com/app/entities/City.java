@@ -25,10 +25,10 @@ public class City {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "city_id")
 	private int cityId;
-	
+
 	@Column(name = "city_name", columnDefinition = "varchar(30)")
 	private String cityName;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "state_id")
 	private State state;

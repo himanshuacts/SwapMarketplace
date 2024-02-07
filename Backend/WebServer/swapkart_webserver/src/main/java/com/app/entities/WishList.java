@@ -28,11 +28,11 @@ public class WishList {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "wishlist_id")
 	private int wishlistId;
-	
+
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@OneToMany
 	@JoinColumn(name = "product_id")
 	private List<Product> products;

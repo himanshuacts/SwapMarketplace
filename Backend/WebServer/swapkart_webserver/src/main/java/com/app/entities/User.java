@@ -25,29 +25,29 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
 	private int userId;
-	
-	@Column(name = "first_name", columnDefinition = "VARCHAR(20)")
+
+	@Column(name = "first_name", columnDefinition = "varchar(20)")
 	private String firstName;
-	
-	@Column(name = "last_name", columnDefinition = "VARCHAR(20)")
+
+	@Column(name = "last_name", columnDefinition = "varchar(20)")
 	private String lastName;
-	
-	@Column(name = "email_id", columnDefinition = "VARCHAR(50)", unique = true)
+
+	@Column(name = "email_id", columnDefinition = "varchar(50)", unique = true)
 	private String emailId;
-	
-	@Column(name = "password", columnDefinition = "VARCHAR(12)")
+
+	@Column(name = "password", columnDefinition = "varchar(12)")
 	private String password;
-	
-	@Column(name = "mobile", columnDefinition = "BIGINT")
+
+	@Column(name = "mobile", columnDefinition = "bigint")
 	private long mobile;
-	
-	@Column(name = "rating", columnDefinition = "INT")
+
+	@Column(name = "rating", columnDefinition = "int")
 	private int rating;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "city_id")
 	private City city;
-	
-	@Column(name = "user_image", columnDefinition = "BLOB")
+
+	@Column(name = "user_image", columnDefinition = "blob")
 	private byte[] userImage;
 }

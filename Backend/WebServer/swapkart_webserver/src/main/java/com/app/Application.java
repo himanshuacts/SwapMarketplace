@@ -17,8 +17,9 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	@Bean // equivalent to <bean id ..../> in xml file
-	public ModelMapper modelMapper() {
+	// equivalent to <bean id ..../> in xml file
+	@Bean
+	ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT)
 				.setPropertyCondition(Conditions.isNotNull());// only non null properties will be transferred from src
@@ -26,11 +27,11 @@ public class Application {
 		modelMapper.addConverter(new StringToDateConverter());
 		return modelMapper;
 	}
-	public class StringToDateConverter extends AbstractConverter<String,LocalDate> {
-	    @Override
-	    protected LocalDate convert(String source) {
-	        return LocalDate.parse(source);
-	    }
-	}
 
+	public class StringToDateConverter extends AbstractConverter<String, LocalDate> {
+		@Override
+		protected LocalDate convert(String source) {
+			return LocalDate.parse(source);
+		}
+	}
 }

@@ -45,12 +45,12 @@ public class Message {
 	@Column(name = "owner_product_id")
 	private int ownerProductId;
 
-	@Column(name = "role", columnDefinition = "VARCHAR(20)")
+	@Column(name = "role", columnDefinition = "varchar(20)")
 	private String role;
 
-	@Column(name = "message", columnDefinition = "VARCHAR(300)")
+	@Column(name = "message", columnDefinition = "varchar(300)")
 	private String message;
 
-	@Column(name = "datetime_stamp", columnDefinition = "DATE")
+	@Column(name = "datetime_stamp", columnDefinition = "date")
 	private LocalDate dateTimeStamp;
 }
