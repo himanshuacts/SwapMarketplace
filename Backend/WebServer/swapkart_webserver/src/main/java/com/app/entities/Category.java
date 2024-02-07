@@ -20,9 +20,9 @@ import lombok.Setter;
 @Table(name = "category")
 public class Category {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
-	private int categoryId;
+	private Integer categoryId;
 
 	@Column(name = "category_name", columnDefinition = "varchar(15)")
 	private String categoryName;

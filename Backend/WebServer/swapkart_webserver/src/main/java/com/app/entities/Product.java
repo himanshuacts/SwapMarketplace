@@ -24,9 +24,9 @@ import lombok.Setter;
 @Table(name = "products")
 public class Product {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
-	private int productId;
+	private Integer productId;
 	
 	@Column(name = "product_name", columnDefinition = "VARCHAR(20)")
 	private String productName;

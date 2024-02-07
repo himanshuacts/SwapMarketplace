@@ -27,9 +27,9 @@ import lombok.ToString;
 @Table(name = "chatbox")
 public class Message {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "msg_id")
-	private int msgId;
+	private Integer msgId;
 
 	@OneToOne
 	@JoinColumn(name = "user_id")

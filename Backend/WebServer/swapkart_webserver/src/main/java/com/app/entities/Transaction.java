@@ -22,9 +22,9 @@ import lombok.Setter;
 @Table(name = "transactions")
 public class Transaction {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "transaction_id")
-	private int transactionId;
+	private Integer transactionId;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")

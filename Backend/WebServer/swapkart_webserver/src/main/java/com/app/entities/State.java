@@ -21,9 +21,9 @@ import lombok.Setter;
 public class State {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "state_id")
-	private int stateId;
+	private Integer stateId;
 	
 	@Column(name = "state_name", columnDefinition = "varchar(25)")
     private String stateName;

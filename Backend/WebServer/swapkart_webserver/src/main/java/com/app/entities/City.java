@@ -22,9 +22,9 @@ import lombok.Setter;
 @Table(name = "city")
 public class City {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "city_id")
-	private int cityId;
+	private Integer cityId;
 
 	@Column(name = "city_name", columnDefinition = "varchar(30)")
 	private String cityName;

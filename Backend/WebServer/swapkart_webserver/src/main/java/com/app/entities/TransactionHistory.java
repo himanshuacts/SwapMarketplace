@@ -23,9 +23,9 @@ import lombok.Setter;
 @Table(name = "transaction_history")
 public class TransactionHistory {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "transaction_history_id")
-	private int transactionHistoryId;
+	private Integer transactionHistoryId;
 	
 	@OneToOne
 	@JoinColumn(name = "transaction_id")

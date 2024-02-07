@@ -25,15 +25,15 @@ import lombok.Setter;
 @Table(name = "wishlist")
 public class WishList {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "wishlist_id")
-	private int wishlistId;
+	private Integer wishlistId;
 
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@OneToMany
-	@JoinColumn(name = "product_id")
-	private List<Product> products;
+//	@OneToMany
+//	@JoinColumn(name = "product_id")
+//	private List<Product> products;
 }
