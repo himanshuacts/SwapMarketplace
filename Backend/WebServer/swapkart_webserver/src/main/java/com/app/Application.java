@@ -17,13 +17,13 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	// equivalent to <bean id ..../> in xml file
 	@Bean
 	ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT)
-				.setPropertyCondition(Conditions.isNotNull());// only non null properties will be transferred from src
-		// --> dest , during the mapping
+				.setPropertyCondition(Conditions.isNotNull());
+		// Only non-null properties will be transferred from source to destination,
+		// during the mapping.
 		modelMapper.addConverter(new StringToDateConverter());
 		return modelMapper;
 	}
