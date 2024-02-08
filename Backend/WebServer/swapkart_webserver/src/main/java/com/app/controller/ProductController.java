@@ -52,7 +52,7 @@ public class ProductController {
 		existingProduct.setPostedDate(product.getPostedDate());
 		existingProduct.setCategory(product.getCategory());
 		existingProduct.setUser(product.getUser());
-		productService.updateProduct(existingProduct);
+		return productService.updateProduct(existingProduct);
 	}
 	
 	@DeleteMapping("/products/{uid}/{pid}")
