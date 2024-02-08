@@ -48,6 +48,6 @@ public class User {
 	@JoinColumn(name = "city_id")
 	private City city;
 
-	@Column(name = "user_image", columnDefinition = "blob")
+	@Column(name = "user_image", columnDefinition = "LONGBLOB")
 	private byte[] userImage;
 }
