@@ -19,22 +19,23 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-	
+  
 	@Bean
 	public ObjectMapper objectMapper() {
 	    return new ObjectMapper().registerModule(new JavaTimeModule());
 	}
 
-
-	@Bean // equivalent to <bean id ..../> in xml file
+	@Bean
 	public ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT)
-				.setPropertyCondition(Conditions.isNotNull());// only non null properties will be transferred from src
-		// --> dest , during the mapping
+				.setPropertyCondition(Conditions.isNotNull());
+		// Only non-null properties will be transferred from source to destination,
+		// during the mapping.
 		modelMapper.addConverter(new StringToDateConverter());
 		return modelMapper;
 	}
+  
 	public class StringToDateConverter extends AbstractConverter<String,LocalDate> {
 	    @Override
 	    protected LocalDate convert(String source) {

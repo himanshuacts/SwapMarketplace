@@ -27,35 +27,35 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
 	private Integer productId;
-	
+
 	@Column(name = "product_name", columnDefinition = "VARCHAR(20)")
 	private String productName;
-	
+
 	@Column(name = "product_description", columnDefinition = "VARCHAR(150)")
 	private String productDescription;
-	
+
 	@Column(name = "product_brand", columnDefinition = "VARCHAR(50)")
 	private String productBrand;
-	
+
 	@Column(name = "price")
 	private int price;
-	
-	@Column(name = "first_image", columnDefinition = "BLOB")
+
+	@Column(name = "first_image", columnDefinition = "LONGBLOB")
 	private byte[] firstImage;
-	
-	@Column(name = "second_image", columnDefinition = "BLOB")
+
+	@Column(name = "second_image", columnDefinition = "LONGBLOB")
 	private byte[] secondImage;
-	
-	@Column(name = "third_image", columnDefinition = "BLOB")
+
+	@Column(name = "third_image", columnDefinition = "LONGBLOB")
 	private byte[] thirdImage;
-	
+
 	@Column(name = "posted_date", columnDefinition = "DATE")
 	private LocalDate postedDate;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category; // Assuming Category object
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user; // Assuming User object
