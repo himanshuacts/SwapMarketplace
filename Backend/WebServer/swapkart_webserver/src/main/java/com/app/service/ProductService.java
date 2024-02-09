@@ -1,13 +1,22 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.app.entities.Product;
 
 public interface ProductService {
 	List<Product> getAllProducts();
+
+	List<Product> getProductsByUserId(Integer uid);
+
+	Optional<Product> getProductById(Integer id);
+
 	Product saveProduct(Product product);
-	Product getProductById(Integer id);
+
 	Product updateProduct(Product product);
-	void deleteProductById(Integer id);
+
+	void deleteProduct(Integer id);
+
+	void deleteProductForUser(Integer uid);
 }

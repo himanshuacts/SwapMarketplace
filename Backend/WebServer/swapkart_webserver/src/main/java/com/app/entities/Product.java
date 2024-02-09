@@ -40,13 +40,13 @@ public class Product {
 	@Column(name = "price")
 	private int price;
 
-	@Column(name = "first_image", columnDefinition = "BLOB")
+	@Column(name = "first_image", columnDefinition = "LONGBLOB")
 	private byte[] firstImage;
 
-	@Column(name = "second_image", columnDefinition = "BLOB")
+	@Column(name = "second_image", columnDefinition = "LONGBLOB")
 	private byte[] secondImage;
 
-	@Column(name = "third_image", columnDefinition = "BLOB")
+	@Column(name = "third_image", columnDefinition = "LONGBLOB")
 	private byte[] thirdImage;
 
 	@Column(name = "posted_date", columnDefinition = "DATE")

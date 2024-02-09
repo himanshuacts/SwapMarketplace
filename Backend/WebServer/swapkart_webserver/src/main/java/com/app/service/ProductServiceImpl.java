@@ -1,6 +1,7 @@
 package com.app.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import com.app.entities.Product;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	private ProductRepository productRepository;
+	private final ProductRepository productRepository;
 
 	public ProductServiceImpl(ProductRepository productRepository) {
 		super();
@@ -23,13 +24,18 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product saveProduct(Product product) {
-		return productRepository.save(product);
+	public List<Product> getProductsByUserId(Integer uid) {
+		return productRepository.findByUser(uid);
 	}
 
 	@Override
-	public Product getProductById(Integer id) {
-		return productRepository.findById(id).get();
+	public Optional<Product> getProductById(Integer id) {
+		return productRepository.findById(id);
+	}
+
+	@Override
+	public Product saveProduct(Product product) {
+		return productRepository.save(product);
 	}
 
 	@Override
@@ -38,8 +44,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void deleteProductById(Integer id) {
+	public void deleteProduct(Integer id) {
 		productRepository.deleteById(id);
+	}
+
+	@Override
+	public void deleteProductForUser(Integer uid) {
+		productRepository.deleteProductsForUser(uid);
 	}
 
 }
