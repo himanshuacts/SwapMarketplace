@@ -13,9 +13,7 @@
 	<artifactId>spring_boot_ems_backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring_boot_ems_backend</name>
-	<description>EMS with E-R , patch mapping custom annotation for
-		validation,upload emp dtls n image upload using requestpart,
-		localdatetime </description>
+	<description>EMS with E-R , patch mapping  custom annotation for validation,upload emp dtls n image  upload  using requestpart, localdatetime </description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -54,7 +52,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		
 		<!-- Swagger UI -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -76,12 +74,8 @@
 		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
+			<artifactId>commons-lang3</artifactId>-
 			<!-- <version>3.14.0</version> -->
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
 	</dependencies>
 
