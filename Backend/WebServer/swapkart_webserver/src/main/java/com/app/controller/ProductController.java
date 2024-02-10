@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.app.dto.ApiResponse;
 import com.app.entities.Product;
 import com.app.service.ProductService;
 
@@ -46,10 +51,21 @@ public class ProductController {
 		return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 	}
 
-	@PostMapping
-	public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-		Product savedProduct = productService.saveProduct(product);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
+	@PostMapping(value = "/add", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<ApiResponse> createProduct(@RequestPart(value = "productReqDTO") String productJson,
+			@RequestPart(value = "firstImage") MultipartFile firstImage,
+			@RequestPart(value = "secondImage") MultipartFile secondImage,
+			@RequestPart(value = "thirdImage") MultipartFile thirdImage) {
+		try {
+			if (productService.saveProduct(productJson, firstImage, secondImage, thirdImage) != null) {
+				return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("Product added successfully"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse("Unable to add product"));
+		}
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiResponse("Internal server error"));
 	}
 
 	@PutMapping("/{pid}")

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.entities.Product;
 
@@ -14,7 +15,7 @@ public interface ProductService {
 
 	Optional<Product> getProductById(Integer id);
 
-	Product saveProduct(Product product);
+	Product saveProduct(String productJson, MultipartFile firstImage, MultipartFile secondImage, MultipartFile thirdImage);
 
 	Product updateProduct(Product product);
 
