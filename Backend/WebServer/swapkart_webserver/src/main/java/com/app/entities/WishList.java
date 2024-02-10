@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,17 +19,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Wish")
-public class Wish {
+@Table(name = "wishlist")
+public class WishList {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "wish_id")
-	private Integer wishId;
-	//@OneToOne
-	@Column(name = "product_id")
-	private Integer productId;
-	
-	//@ManyToOne
-	@Column(name = "user_id")
-	private Integer userId;
+	@Column(name = "wishlist_id")
+	private Integer wishlistId;
+
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+//	@OneToMany
+//	@JoinColumn(name = "product_id")
+//	private List<Product> products;
 }
