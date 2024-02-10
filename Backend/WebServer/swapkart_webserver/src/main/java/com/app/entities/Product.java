@@ -28,28 +28,28 @@ public class Product {
 	@Column(name = "product_id")
 	private Integer productId;
 
-	@Column(name = "product_name", columnDefinition = "VARCHAR(20)")
+	@Column(name = "product_name", columnDefinition = "varchar(20)")
 	private String productName;
 
-	@Column(name = "product_description", columnDefinition = "VARCHAR(150)")
+	@Column(name = "product_description", columnDefinition = "varchar(150)")
 	private String productDescription;
 
-	@Column(name = "product_brand", columnDefinition = "VARCHAR(50)")
+	@Column(name = "product_brand", columnDefinition = "varchar(50)")
 	private String productBrand;
 
 	@Column(name = "price")
 	private int price;
 
-	@Column(name = "first_image", columnDefinition = "LONGBLOB")
+	@Column(name = "first_image", columnDefinition = "longblob")
 	private byte[] firstImage;
 
-	@Column(name = "second_image", columnDefinition = "LONGBLOB")
+	@Column(name = "second_image", columnDefinition = "longblob")
 	private byte[] secondImage;
 
-	@Column(name = "third_image", columnDefinition = "LONGBLOB")
+	@Column(name = "third_image", columnDefinition = "longblob")
 	private byte[] thirdImage;
 
-	@Column(name = "posted_date", columnDefinition = "DATE")
+	@Column(name = "posted_date", columnDefinition = "date")
 	private LocalDate postedDate;
 
 	@ManyToOne

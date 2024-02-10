@@ -66,7 +66,7 @@ public class UserController {
 			@RequestPart(value = "userReqDto") String userReqJson, @RequestPart(value = "file") MultipartFile file) {
 		try {
 			if (userService.updateUser(userId, userReqJson, file) != null) {
-				return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("User updated successfully"));
+				return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("User updated successfully"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

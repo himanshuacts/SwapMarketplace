@@ -28,4 +28,25 @@ public class ProductResDTO {
 	private LocalDate postedDate;
 	private Category category;
 	private User user;
+	
+	public byte[] decodeFirstImage() {
+		if (firstImage != null) {
+			return Base64.getDecoder().decode(firstImage);
+		}
+		return null;
+	}
+	
+	public byte[] decodeSecondImage() {
+		if (secondImage != null) {
+			return Base64.getDecoder().decode(secondImage);
+		}
+		return null;
+	}
+	
+	public byte[] decodeThirdImage() {
+		if (thirdImage != null) {
+			return Base64.getDecoder().decode(thirdImage);
+		}
+		return null;
+	}
 }
