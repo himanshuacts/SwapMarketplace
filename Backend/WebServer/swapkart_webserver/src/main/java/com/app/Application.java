@@ -19,14 +19,14 @@ public class Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-  
+
 	@Bean
-	public ObjectMapper objectMapper() {
-	    return new ObjectMapper().registerModule(new JavaTimeModule());
+	ObjectMapper objectMapper() {
+		return new ObjectMapper().registerModule(new JavaTimeModule());
 	}
 
 	@Bean
-	public ModelMapper modelMapper() {
+	ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT)
 				.setPropertyCondition(Conditions.isNotNull());
@@ -35,12 +35,12 @@ public class Application {
 		modelMapper.addConverter(new StringToDateConverter());
 		return modelMapper;
 	}
-  
-	public class StringToDateConverter extends AbstractConverter<String,LocalDate> {
-	    @Override
-	    protected LocalDate convert(String source) {
-	        return LocalDate.parse(source);
-	    }
+
+	public class StringToDateConverter extends AbstractConverter<String, LocalDate> {
+		@Override
+		protected LocalDate convert(String source) {
+			return LocalDate.parse(source);
+		}
 	}
 
 }

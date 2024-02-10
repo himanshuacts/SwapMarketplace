@@ -9,11 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.app.entities.Product;
 
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-	List<Product> findByUser(Integer uid);
-
 	@Modifying
-	@Query("delete from Product p where p.user = ?1")
-	void deleteProductsForUser(Integer uid);
+	@Query("select p from Product p where p.user.userId = ?1")
+	List<Product> findByUser(Integer userId);
 }
