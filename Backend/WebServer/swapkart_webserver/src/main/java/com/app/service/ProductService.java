@@ -8,6 +8,8 @@ import com.app.dto.ApiResponse;
 import com.app.entities.Product;
 
 public interface ProductService {
+	List<Product> getAllProducts();
+	
 	List<Product> getProductsByUserId(Integer userId);
 
 	Product getProductById(Integer productId);

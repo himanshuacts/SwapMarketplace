@@ -103,4 +103,9 @@ public class ProductServiceImpl implements ProductService {
 		productRepository.deleteById(productId);
 		return new ApiResponse("Product deleted successfully");
 	}
+
+	@Override
+	public List<Product> getAllProducts() {
+		return productRepository.findAll();
+	}
 }
