@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public ApiResponse deleteUserById(Integer userId) {
 		userRepository.deleteById(userId);
-		return new ApiResponse("user deleted successfully");
+		return new ApiResponse("User deleted successfully");
 	}
 
 	@Override
