@@ -1,6 +1,6 @@
 package com.app.entities;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,12 +39,6 @@ public class Message {
 	@JoinColumn(name = "owner_id")
 	private User owner;
 
-	@Column(name = "user_product_id")
-	private int userProductId;
-	
-	@Column(name = "owner_product_id")
-	private int ownerProductId;
-
 	@Column(name = "role", columnDefinition = "varchar(20)")
 	private String role;
 
@@ -52,5 +46,5 @@ public class Message {
 	private String message;
 
 	@Column(name = "datetime_stamp", columnDefinition = "date")
-	private LocalDate dateTimeStamp;
+	private LocalDateTime dateTimeStamp;
 }
