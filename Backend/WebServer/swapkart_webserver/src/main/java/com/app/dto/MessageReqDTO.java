@@ -14,7 +14,5 @@ import lombok.ToString;
 public class MessageReqDTO {
 	private Integer userId;
 	private Integer ownerId;
-	private Integer userProductId;
-	private Integer ownerProductId;
 	private String message;
 }

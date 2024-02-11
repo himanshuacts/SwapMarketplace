@@ -27,10 +27,8 @@ public class TransactionHistory {
 	@Column(name = "transaction_history_id")
 	private Integer transactionHistoryId;
 	
-	@OneToOne
-	@JoinColumn(name = "transaction_id")
-	@MapsId("transactionId")
-	private Transaction transactionId;
+	@Column(name = "transaction_id")
+	private Integer transactionId;
 	
 	@Column(name = "user_id")
 	private int userId;
