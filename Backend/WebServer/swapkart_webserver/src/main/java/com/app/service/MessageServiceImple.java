@@ -37,7 +37,6 @@ public class MessageServiceImple implements MessageService {
 		msg.setUser(user);
 		msg.setOwner(owner);
 		msg.setDateTimeStamp(LocalDateTime.now());
-		msg.setRole(null);
 		msg.setMessage(messageDto.getMessage());
 		if (messageRepo.save(msg) != null) {
 			return new ApiResponse("message sent successfully!!!");

@@ -39,8 +39,6 @@ public class Message {
 	@JoinColumn(name = "owner_id")
 	private User owner;
 
-	@Column(name = "role", columnDefinition = "varchar(20)")
-	private String role;
 
 	@Column(name = "message", columnDefinition = "varchar(300)")
 	private String message;

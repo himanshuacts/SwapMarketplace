@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -26,21 +24,17 @@ public class Transaction {
 	@Column(name = "transaction_id")
 	private Integer transactionId;
 	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	@Column(name = "user_id")
+	private Integer userId;
 	
-	@ManyToOne
-	@JoinColumn(name = "user_product_id")
-	private Product userProduct; // Assuming Product object
+	@Column(name = "user_product_id")
+	private Integer userProductId; // Assuming Product object
 	
-	@ManyToOne
-	@JoinColumn(name = "owner_id")
-	private User owner;
+	@Column(name = "owner_id")
+	private Integer ownerId;
 	
-	@ManyToOne
-	@JoinColumn(name = "owner_product_id")
-	private Product ownerProduct; // Assuming Product object
+	@Column(name = "owner_product_id")
+	private Integer ownerProductId; // Assuming Product object
 	
 	@Column(name = "status")
 	private boolean status;
