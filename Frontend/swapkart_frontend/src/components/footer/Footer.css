@@ -1,0 +1,69 @@
+
+body {
+    background-color: #f3f6fd;
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(189, 196, 203)
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+ul>li {
+    padding: 4px;
+    color:#C5CAE9;
+}
+
+ul>li:hover {
+    color: #324AB2;
+    cursor: pointer
+}
+
+hr {
+    border-width: 3px
+}
+
+.card {
+    padding: 2% 7%
+}
+
+.card-text{
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(126, 132, 158);
+}
+
+.social>i {
+    padding: 1%;
+    font-size: 15px
+}
+
+.social>i:hover {
+    color: #957bda;
+    cursor: pointer
+}
+
+.policy>div {
+    padding: 4px
+}
+
+.heading {
+    color: black
+}
+
+.divider {
+    border-top: 2px solid
+}
+
+.pull-right{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.pull-left{
+    font-size: 13px;
+    font-weight: 500;
+}

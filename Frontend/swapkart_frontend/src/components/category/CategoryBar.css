@@ -1,0 +1,13 @@
+.cat-link:hover{
+    border-bottom: 3px solid #324AB2;
+    border-radius: 5px;
+    transition: all 0.5s;
+}
+
+.cat-link{
+    border: 3px solid white;
+    font-weight: 600;
+    color: gray;
+    padding: 13px 0px;
+    font-size: 16px;
+}
