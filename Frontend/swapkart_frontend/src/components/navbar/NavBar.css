@@ -1,0 +1,26 @@
+.header-nav{
+    box-sizing: border-box;
+}
+
+.search-bar{
+    border-radius: 20px;
+}
+
+.nav-logo{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.profile{
+    font-weight: 600;
+    color: gray;
+}
+
+.profile:hover{
+    color: #324AB2;
+    transition: all 0.5s;
+}
+
+.login-img{
+    width: 30px;
+}
