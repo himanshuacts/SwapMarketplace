@@ -4,7 +4,7 @@ import './CategoryBar.css'
 
 const CategoryBar = () => {
   return (
-    <div className='container-fluid bg-white shadow-sm'>
+    <div className='container-fluid bg-white shadow-sm rounded-bottom'>
     <div className='row d-flex justify-content-around'>
         <a href='#' className='text-decoration-none px-3 cat-link'>Fashion</a>
         <a href='#' className='text-decoration-none px-3 cat-link'>Electronics</a>

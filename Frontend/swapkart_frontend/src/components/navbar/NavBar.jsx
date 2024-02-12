@@ -5,8 +5,8 @@ import man from '../../images/man.png'
 
 const NavBar = () => {
     return (
-        <nav className='container-fluid header-nav bg-white shadow-sm border-bottom'>
-            <div className='row d-flex justify-content-between align-items-center py-2'>
+        <nav className='container-fluid header-nav bg-white shadow-sm border-bottom rounded-top'>
+            <div className='row d-flex justify-content-between align-items-center py-2 rounded-lg'>
                 <div className='col-2'>
                     <a href='#' className='text-decoration-none'>
                         <span className='nav-logo'>SwapMarketplace</span>

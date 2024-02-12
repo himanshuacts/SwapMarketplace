@@ -10,7 +10,7 @@ const Footer = () => {
                         <div className="footer-text pull-left">
                             <div className="d-flex">
                                 <h2 className="font-weight-bold mr-2 px-3"> SM </h2>
-                                <h2 style={{ color: "#324AB2" }}>SwapMarketplace</h2>
+                                <h2 style={{ color: "#00A9FF" }}>SwapMarketplace</h2>
                             </div>
                             <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi non pariatur numquam animi nam at impedit odit nisi.</p>
                             <div className="social mt-2 mb-3"> <i className="fa fa-facebook-official fa-lg"></i> <i className="fa fa-instagram fa-lg"></i> <i className="fa fa-twitter fa-lg"></i> <i className="fa fa-linkedin-square fa-lg"></i> <i className="fa fa-facebook"></i> </div>
