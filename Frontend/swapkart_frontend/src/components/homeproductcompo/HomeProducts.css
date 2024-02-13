@@ -1,0 +1,8 @@
+.home-card-cont{
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.home-card-row{
+    height: 500px;
+}

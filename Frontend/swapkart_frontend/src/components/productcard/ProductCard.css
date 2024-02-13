@@ -1,0 +1,41 @@
+.product-card-owner {
+    height: 30px;
+    width: 30px;
+}
+
+.product-card {
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.product-card:hover {
+    box-shadow: 1px 1px 10px rgb(204, 204, 206), -1px -1px 10px rgb(204, 204, 206);
+    transition: all 0.5s;
+}
+
+.product-card-title {
+    color: black;
+}
+
+.product-card-desc {
+    color: rgb(121, 121, 121);
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+}
+
+.product-owner-name {
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(121, 121, 121);
+}
+
+.owner-rating-home {
+    font-size: 17px;
+    color: #F4CE14;
+}
+
+.product-image {
+    height: 180px;
+}
