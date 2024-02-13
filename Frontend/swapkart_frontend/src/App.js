@@ -1,21 +1,24 @@
 import './App.css';
 import NavBar from './components/navbar/NavBar';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import CategoryBar from './components/category/CategoryBar';
 import Footer from './components/footer/Footer';
+import Corousel from './components/corousel/Corousel';
+import HomeProducts from './components/homeproductcompo/HomeProducts';
 
 function App() {
   return (
     <div className='App-Header'>
       <header className='m-3'>
         <NavBar />
-        <CategoryBar/>
+        <CategoryBar />
       </header>
-      <div className='sample-div'></div>
+        <Corousel />
+        <HomeProducts />
       <footer>
-        <Footer/>
+        <Footer />
       </footer>
     </div>
   );
