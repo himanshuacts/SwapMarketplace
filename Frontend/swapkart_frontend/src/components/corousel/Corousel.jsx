@@ -1,22 +1,22 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import banner from '../../images/banner.jpg';
-import './Carousel.css';
+import './Corousel.css';
 
-const Carousel = () => {
+const Corousel = () => {
     return (
         <Carousel className='mx-3 rounded-lg' fade indicators={false}>
             <Carousel.Item interval={5000}>
-                <img src={banner} alt='slide' className='carousel-img rounded-lg' />
+                <img src={banner} alt='slide' className='corousel-img rounded-lg' />
             </Carousel.Item>
             <Carousel.Item interval={5000}>
-                <img src={banner} alt='slide' className='carousel-img rounded-lg' />
+                <img src={banner} alt='slide' className='corousel-img rounded-lg' />
             </Carousel.Item>
             <Carousel.Item interval={5000}>
-                <img src={banner} alt='slide' className='carousel-img rounded-lg' />
+                <img src={banner} alt='slide' className='corousel-img rounded-lg' />
             </Carousel.Item>
         </Carousel>
     );
 }
 
-export default Carousel;
+export default Corousel;
