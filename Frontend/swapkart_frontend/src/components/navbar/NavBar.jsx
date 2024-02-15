@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import man from "../../images/man.png";
-import avatar from '../../images/avatar.png';
+import avatar from "../../images/avatar.png";
 import logo from "../../images/logo.jpg";
 import "./NavBar.css";
 
@@ -10,10 +10,10 @@ const NavBar = ({ onLogoClick }) => {
   return (
     <nav className="container-fluid header-nav bg-white shadow-sm border-bottom rounded-top">
       <div className="row d-flex justify-content-between align-items-center py-2 rounded-lg">
-        <div className="col-2">
-        <Link to={"/"} onClick={onLogoClick} className='text-decoration-none'>
-            <img src={logo} alt='swap-logo' className='logo-img mr-3' />
-            <span className='nav-logo'>Swap Marketplace</span>
+        <div className="col-3">
+          <Link to={"/"} onClick={onLogoClick} className="text-decoration-none">
+            <img src={logo} alt="swap-logo" className="logo-img mr-3" />
+            <span className="nav-logo">Swap Marketplace</span>
           </Link>
         </div>
         <div className="col-5">
