@@ -1,0 +1,13 @@
+header {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.divider {
+    color: rgb(161, 161, 161);
+    margin-bottom: 20px;
+}
+
+.products {
+    padding: 20px;
+}
