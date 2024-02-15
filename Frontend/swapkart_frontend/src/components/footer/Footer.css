@@ -1,4 +1,3 @@
-
 body {
     background-color: #f3f6fd;
     font-size: 13px;
@@ -14,7 +13,7 @@ ul {
 
 ul>li {
     padding: 4px;
-    color:#C5CAE9;
+    color: #C5CAE9;
 }
 
 ul>li:hover {
@@ -30,7 +29,7 @@ hr {
     padding: 2% 7%
 }
 
-.card-text{
+.card-text {
     font-size: 15px;
     font-weight: 500;
     color: rgb(126, 132, 158);
@@ -58,12 +57,12 @@ hr {
     border-top: 2px solid
 }
 
-.pull-right{
+.pull-right {
     font-size: 13px;
     font-weight: 500;
 }
 
-.pull-left{
+.pull-left {
     font-size: 13px;
     font-weight: 500;
 }
