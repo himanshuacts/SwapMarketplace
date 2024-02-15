@@ -9,7 +9,7 @@ const NavBar = ({ onLogoClick }) => {
     <nav className='container-fluid header-nav bg-white shadow-sm border-bottom rounded-top'>
       <div className='row d-flex justify-content-between align-items-center py-2 rounded-lg'>
         <div className='col-2'>
-          <Link to={"/"} onClick={onLogoClick}>
+          <Link to={"/"} onClick={onLogoClick} className='text-decoration-none'>
             <img src={logo} alt='swap-logo' className='logo-img mr-3' />
             <span className='nav-logo'>Swap Marketplace</span>
           </Link>

@@ -1,3 +1,7 @@
+.nav-item {
+    text-decoration: none;
+}
+
 .cat-link:hover {
     border-bottom: 3px solid #00A9FF;
     border-radius: 5px;

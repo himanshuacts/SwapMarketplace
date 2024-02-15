@@ -15,7 +15,7 @@ const ProductCard = (props) => {
         <div className='card-footer d-flex justify-content-between align-items-center  bg-white'>
           <div className='d-flex align-items-center'>
             <img src={avatar} className='product-card-owner rounded-circle mr-3' />
-            <span className='product-owner-name'>John Kane</span>
+            <span className='product-owner-name'>{props.owner}</span>
           </div>
           <div className='stars owner-rating-home'>
             <LiaStarSolid />
