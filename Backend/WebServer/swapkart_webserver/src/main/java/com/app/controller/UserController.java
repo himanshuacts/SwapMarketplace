@@ -22,7 +22,6 @@ import com.app.dto.AuthReqDTO;
 import com.app.service.UserService;
 
 @RestController
-@RequestMapping("/SwapKart")
 public class UserController {
 
 	@Autowired
