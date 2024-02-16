@@ -1,26 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./signUp.css";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 function LogInForm() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const [userData, setUserData] = useState()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add form submission logic here
-    console.log("Form submitted:", formData);
-  };
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    // Add form submission logic here
-    console.log("Form submitted:", formData);
-  };
+  const [loginError, setLoginError] = useState(false);
+
+  const handleChange = (event) => {
+    let { name, value } = event.target;
+    setFormData({ ...formData, [name]: value })
+  }
+
+  const handleSubmit = () => {
+    axios.post('http://localhost:8080/swapkart/SwapKart/signin', {
+      email: formData.email,
+      password: formData.password
+    }).then((res) => {
+      setUserData(res.data);
+      setLoginError(false);
+    }).catch((err) => {
+      setLoginError(true);
+    });
+  }
+
+  useEffect(() => {
+    if (userData) {
+      localStorage.setItem("User", JSON.stringify(userData));
+      navigate("/");
+    }
+
+  }, [userData])
 
   return (
     <div className="d-flex justify-content-center align-center signup-bg-img m-3 mt-3 pb-5">
@@ -29,6 +45,9 @@ function LogInForm() {
           <h3>Log In</h3>
         </div>
         <div class="card-body">
+          {loginError && <div class="alert alert-danger d-flex justify-content-center align-items-center" role="alert">
+            Invalid Email or Password
+          </div>}
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email" class="signup-label ">
@@ -65,12 +84,14 @@ function LogInForm() {
           </form>
         </div>
         <div class="card-footer bg-white d-flex justify-content-around">
-          <button type="submit" class="btn btn-success">
+          <button type="submit" class="btn btn-success" onClick={handleSubmit}>
             Log In
           </button>
-          <button type="button" class="btn btn-primary" onClick={handleSignUp}>
-            Sign Up
-          </button>
+          <Link to="/signup">
+            <button type="button" class="btn btn-primary">
+              SignUp
+            </button>
+          </Link>
         </div>
       </div>
     </div>
