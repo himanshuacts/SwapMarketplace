@@ -5,10 +5,14 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.ApiResponse;
+import com.app.dto.ProductResDTO;
 import com.app.entities.Product;
 
 public interface ProductService {
 	List<Product> getAllProducts();
+    List<ProductResDTO> getProductResDTOsFromDatabase(ProductService productService);
+	
+	ProductResDTO createProductResDTO(Product product);
 	
 	List<Product> getProductsByUserId(Integer userId);
 

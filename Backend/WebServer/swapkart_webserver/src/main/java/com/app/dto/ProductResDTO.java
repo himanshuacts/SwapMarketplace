@@ -18,6 +18,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ProductResDTO {
+	private Integer productId;
 	private String productName;
 	private String productDescription;
 	private String productBrand;
@@ -26,8 +27,8 @@ public class ProductResDTO {
 	private byte[] secondImage;
 	private byte[] thirdImage;
 	private LocalDate postedDate;
-	private Category category;
-	private User user;
+	private int categoryId;
+	private UserResDTO user;
 	
 	public byte[] decodeFirstImage() {
 		if (firstImage != null) {
