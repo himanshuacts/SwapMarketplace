@@ -1,4 +1,16 @@
 .corousel-img{
+    width: 700px;
+}
+
+.corousel-item{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.3)) ,url("../../images/back.png");
     height: 500px;
-    width: 100%;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cor-text{
+    line-height: 80px;
+    font-size: 40px;
 }
