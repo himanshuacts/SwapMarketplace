@@ -61,6 +61,7 @@ public class UserServiceImpl implements UserService {
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid user login : bad credentials!!!!!"));
 		City city = cityRepository.findById(user.getCity().getCityId()).orElseThrow();
 		AuthRespDTO dto = new AuthRespDTO();
+		dto.setId(user.getUserId());
 		dto.setFirstName(user.getFirstName());
 		dto.setLastName(user.getLastName());
 		dto.setEmailId(user.getEmailId());
