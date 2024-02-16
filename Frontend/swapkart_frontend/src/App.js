@@ -16,6 +16,16 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { Route, Router, Routes } from 'react-router';
 
+// const user = {
+//   id: 1,
+//   firstName: 'Pratik',
+//   lastName: 'Patil',
+//   email: 'Pratik7895@gamil.com',
+//   mobileNumber: '9146353674',
+//   city: 'Berlin',
+//   profileImage: 'default-image-url.jpg',
+// };
+
 function App() {
   // State to track the selected category
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -56,9 +66,13 @@ function App() {
           </div>
         )} */}
         <Routes>
-          <Route path='/' Component={HomePage}/>
+          <Route path="/account" element={<AccountSettings user={user} />} />
+          <Route path="/update" element={<UpdatePage />} />
+        </Routes>
+        <Routes>
+          <Route path='/' Component={HomePage} />
           <Route path='/signin' Component={LogIn} />
-          <Route path='/signup' Component={SignUpForm}/>
+          <Route path='/signup' Component={SignUpForm} />
         </Routes>
         <footer>
           <Footer />
