@@ -11,6 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'jquery/dist/jquery.min.js';
 import './App.css';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 function App() {
   // State to track the selected category
@@ -31,29 +33,31 @@ function App() {
   };
 
   return (
-    <div className='App-Header'>
-      <header className='m-3'>
-        {/* Pass the handler to NavBar */}
-        <NavBar onLogoClick={handleNavBarClick} />
-        {/* Pass the handler to CategoryBar */}
-        <CategoryBar onCategoryChange={handleCategoryChange} />
-      </header>
+    <Provider store={store}>
+      <div className='App-Header'>
+        <header className='m-3'>
+          {/* Pass the handler to NavBar */}
+          <NavBar onLogoClick={handleNavBarClick} />
+          {/* Pass the handler to CategoryBar */}
+          <CategoryBar onCategoryChange={handleCategoryChange} />
+        </header>
 
-      {/* Render Category component or Corousel and HomeProducts based on selected category and showDefault state */}
-      {selectedCategory && !showDefault ? (
-        <Category category={selectedCategory} />
-      ) : (
-        <div>
-          {/* Render Corousel and HomeProducts by default */}
-          <Corousel />
-          <HomeProducts />
-        </div>
-      )}
+        {/* Render Category component or Corousel and HomeProducts based on selected category and showDefault state */}
+        {selectedCategory && !showDefault ? (
+          <Category category={selectedCategory} />
+        ) : (
+          <div>
+            {/* Render Corousel and HomeProducts by default */}
+            <Corousel />
+            <HomeProducts />
+          </div>
+        )}
 
-      <footer>
-        <Footer />
-      </footer>
-    </div>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
+    </Provider>
   );
 }
 
