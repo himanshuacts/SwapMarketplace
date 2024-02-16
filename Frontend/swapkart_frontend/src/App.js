@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import NavBar from './components/navbar/NavBar';
 import CategoryBar from './components/category/CategoryBar';
 import Footer from './components/footer/Footer';
@@ -7,12 +7,14 @@ import HomeProducts from './components/homeproductcompo/HomeProducts';
 import Category from './components/category/Category';
 import SignUpForm from './components/LoginAndSignUp/SignUpForm';
 import LogIn from './components/LoginAndSignUp/LogIn';
+import HomePage from './components/homepage/HomePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'jquery/dist/jquery.min.js';
 import './App.css';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { Route, Router, Routes } from 'react-router';
 
 function App() {
   // State to track the selected category
@@ -34,6 +36,7 @@ function App() {
 
   return (
     <Provider store={store}>
+
       <div className='App-Header'>
         <header className='m-3'>
           {/* Pass the handler to NavBar */}
@@ -43,16 +46,20 @@ function App() {
         </header>
 
         {/* Render Category component or Corousel and HomeProducts based on selected category and showDefault state */}
-        {selectedCategory && !showDefault ? (
+        {/* {selectedCategory && !showDefault ? (
           <Category category={selectedCategory} />
         ) : (
-          <div>
-            {/* Render Corousel and HomeProducts by default */}
-            <Corousel />
+          <div> */}
+        {/* Render Corousel and HomeProducts by default */}
+        {/* <Corousel />
             <HomeProducts />
           </div>
-        )}
-
+        )} */}
+        <Routes>
+          <Route path='/' Component={HomePage}/>
+          <Route path='/signin' Component={LogIn} />
+          <Route path='/signup' Component={SignUpForm}/>
+        </Routes>
         <footer>
           <Footer />
         </footer>
