@@ -1,6 +1,8 @@
 package com.app.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
@@ -14,6 +16,8 @@ import com.app.dao.ProductRepository;
 import com.app.dao.UserRepository;
 import com.app.dto.ApiResponse;
 import com.app.dto.ProductReqDTO;
+import com.app.dto.ProductResDTO;
+import com.app.dto.UserResDTO;
 import com.app.entities.Category;
 import com.app.entities.Product;
 import com.app.entities.User;
@@ -107,5 +111,67 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getAllProducts() {
 		return productRepository.findAll();
+	}
+
+	@Override
+	public List<ProductResDTO> getProductResDTOsFromDatabase(ProductService productService) {
+		// TODO Auto-generated method stub
+		List<Product> products = productService.getAllProducts(); // Assuming a ProductService exists for retrieving products
+
+	    if (products == null || products.isEmpty()) {
+	        return Collections.emptyList(); // Return empty list if no products found
+	    }
+
+	    List<ProductResDTO> dtos = new ArrayList<>();
+	    for (Product product : products) {
+	        dtos.add(createProductResDTO(product));
+	    }
+
+	    return dtos;
+	}
+
+	@Override
+	public ProductResDTO createProductResDTO(Product product) {
+		try {
+			ProductResDTO dto = new ProductResDTO();
+			dto.setProductId(product.getProductId());
+	        dto.setProductName(product.getProductName());
+	        dto.setProductDescription(product.getProductDescription());
+	        dto.setProductBrand(product.getProductBrand());
+	        dto.setPrice(product.getPrice());
+	        dto.setFirstImage(product.getFirstImage());
+	        dto.setSecondImage(product.getSecondImage());
+	        dto.setThirdImage(product.getThirdImage());
+	        dto.setPostedDate(product.getPostedDate());
+	        dto.setCategoryId(product.getUser().getUserId());
+	        
+	        User user = product.getUser();
+	        if (user != null) {
+	            dto.setUser(createSimplifiedUserResDTO(user)); // Create a simplified user representation
+	        } else {
+	            dto.setUser(null); // Set user to null if `product.getUser()` is null
+	        }
+            
+	        return dto;
+		}
+		
+		catch (RuntimeException e) {
+			throw new RuntimeException("No product in database",e);
+		}
+	}
+	
+	public UserResDTO createSimplifiedUserResDTO(User user) {
+	    if (user == null) {
+	        return null; // Handle null input
+	    }
+
+	    return new UserResDTO(
+	        user.getUserId(), // Assume userId is appropriate type
+	        user.getFirstName(), // Assume firstName is appropriate type
+	        user.getRating(),
+	        user.getUserImage(),
+	        user.getCity().getCityName()
+	        
+	    );
 	}
 }
