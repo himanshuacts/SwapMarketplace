@@ -8,6 +8,8 @@ import Category from './components/category/Category';
 import SignUpForm from './components/LoginAndSignUp/SignUpForm';
 import LogIn from './components/LoginAndSignUp/LogIn';
 import HomePage from './components/homepage/HomePage';
+import AccountSettings from './components/accountsettings/AccountSettings';
+import UpdatePage from './components/updatepage/UpdatePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'jquery/dist/jquery.min.js';
@@ -65,10 +67,10 @@ function App() {
             <HomeProducts />
           </div>
         )} */}
-        <Routes>
+        {/* <Routes>
           <Route path="/account" element={<AccountSettings user={user} />} />
           <Route path="/update" element={<UpdatePage />} />
-        </Routes>
+        </Routes> */}
         <Routes>
           <Route path='/' Component={HomePage} />
           <Route path='/signin' Component={LogIn} />
