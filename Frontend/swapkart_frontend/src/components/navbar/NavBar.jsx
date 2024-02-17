@@ -47,7 +47,7 @@ const NavBar = ({ onLogoClick }) => {
             <div className="dropdown-menu shadow-sm">
               <a className="dropdown-item" href="/account">Account Setting</a>
               <a className="dropdown-item" href="#">Your Products</a>
-              <a className="dropdown-item" href="#">Wish List</a>
+              <Link to="/WishList" className="dropdown-item">Wish List</Link>
               <a className="dropdown-item" href="/" onClick={() => {
                 localStorage.removeItem("User")
               }}>Log Out</a>

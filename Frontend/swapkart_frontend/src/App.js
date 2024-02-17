@@ -11,6 +11,7 @@ import HomePage from './components/homepage/HomePage';
 import AccountSettings from './components/accountsettings/AccountSettings';
 import UpdatePage from './components/updatepage/UpdatePage';
 import ProductDetailsPage from './components/Product/ProductDetails';
+import Wishlist from './components/wishlist/Wishlist';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'jquery/dist/jquery.min.js';
@@ -79,6 +80,7 @@ function App() {
           <Route path='/signup' Component={SignUpForm} />
           <Route path='/:cname/:cid' Component={Category} />
           <Route path="/products/:uid/:pid" Component={ProductDetailsPage}/>
+	        <Route path='/WishList' Component={Wishlist}/>
         </Routes>
         
         <footer>

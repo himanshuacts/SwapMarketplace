@@ -1,37 +1,83 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./Wishlist.css";
+import axios from 'axios';
 
 const Wishlist = () => {
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: "Product 1",
-      image:
-        "https://images.pexels.com/photos/2783873/pexels-photo-2783873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      image:
-        "https://images.pexels.com/photos/3819969/pexels-photo-3819969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      image:
-        "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
 
-  const removeProduct = (id) => {
-    setProducts(products.filter((product) => product.id !== id));
+  useEffect(() => {
+    // Fetch wishes on component mount
+    fetchWishlist();
+  }, []);
+
+  const fetchWishlist = async () => {
+    try {
+      // Retrieve user details from local storage
+      const storedUser = JSON.parse(localStorage.getItem('User'));
+
+      if (storedUser) {
+        // Use the user ID from the stored user details
+        const userId = storedUser.id; // Update 'userId' to the actual property name in your user object
+
+        const response = await axios.get(`http://localhost:8080/swapkart/Wishlist/${userId}`);
+        console.log(response);
+        // Extract product IDs from the wishlist response
+        const productIds = response.data.map((wishlistItem) => wishlistItem.productId);
+        
+        // Fetch product details for each product ID
+        const productDetailsPromises = productIds.map(async (productId) => {
+          const productResponse = await axios.get(`http://localhost:8080/swapkart/products/${userId}/${productId}`);
+          return productResponse.data;
+        });
+        // Wait for all product details requests to complete
+        const productDetails = await Promise.all(productDetailsPromises);
+        // Combine wishlist data with fetched product details
+        const updatedProducts = response.data.map((wishlistItem, index) => ({
+          ...wishlistItem,
+          productDetails: productDetails[index], // Assuming the fetched product details contain image and name
+        }));
+        setProducts(updatedProducts);
+      } else {
+        console.error('User details not found in local storage.');
+      }
+    } catch (error) {
+      console.error('Error fetching wishlist:', error);
+    }
   };
 
-  const clearAllProducts = () => {
-    setProducts([]);
+  const removeProduct = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/swapkart/Wishlist/wishes/${id}`);
+      // After successfully removing the product, fetch the updated wishlist
+      fetchWishlist();
+    } catch (error) {
+      console.error('Error removing product:', error);
+    }
   };
+
+  const clearAllProducts = async () => {
+    try {
+      // Retrieve user details from local storage
+      const storedUser = JSON.parse(localStorage.getItem('User'));
+
+      if (storedUser) {
+        // Use the user ID from the stored user details
+        const userId = storedUser.id; // Update 'userId' to the actual property name in your user object
+
+        await axios.delete(`http://localhost:8080/swapkart/Wishlist/${userId}`);
+        // After successfully clearing all products, fetch the updated wishlist
+        fetchWishlist();
+      } else {
+        console.error('User details not found in local storage.');
+      }
+    } catch (error) {
+      console.error('Error clearing wishlist:', error);
+    }
+  };
+
+
 
   return (
     <div className="d-flex justify-content-center align-items-center">
@@ -42,11 +88,12 @@ const Wishlist = () => {
         <div className="card-body">
           <table className="table table-hover">
             <tbody>
-              {products.map((product) => (
-                <tr key={product.id}>
+              {products.map((wishlistItem) => (
+                <tr key={wishlistItem.productId}>
                   <td>
                     <img
-                      src={product.image}
+                      src={`data:image/jpeg;base64,${wishlistItem.productDetails.firstImage}`}
+                      alt={wishlistItem.productDetails.productName}
                       style={{
                         width: "50px",
                         height: "50px",
@@ -54,15 +101,13 @@ const Wishlist = () => {
                       }}
                     />
                   </td>
-                  <td
-                    style={{ verticalAlign: "middle", paddingRight: "400px" }}
-                  >
-                    {product.name}
+                  <td style={{ verticalAlign: "middle", paddingRight: "400px" }}>
+                    {wishlistItem.productDetails.productName}
                   </td>
                   <td style={{ verticalAlign: "middle" }}>
                     <FontAwesomeIcon
                       icon={faTrash}
-                      onClick={() => removeProduct(product.id)}
+                      onClick={() => removeProduct(wishlistItem.wishId)}
                       style={{ cursor: "pointer" }}
                     />
                   </td>
