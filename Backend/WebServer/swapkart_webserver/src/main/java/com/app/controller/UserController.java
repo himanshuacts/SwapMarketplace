@@ -1,4 +1,4 @@
-package com.app.controller;
+																																																										package com.app.controller;
 
 import javax.validation.Valid;
 
@@ -30,10 +30,10 @@ public class UserController {
 	@PostMapping(value = "/signup", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<ApiResponse> signUp(@RequestPart(value = "userReqDto") String userReqJson,
-			@RequestPart(value = "file") MultipartFile file) {
+			@RequestPart(value = "image") MultipartFile image) {
 
 		try {
-			if (userService.createUser(userReqJson, file) != null) {
+			if (userService.createUser(userReqJson, image) != null) {
 				return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("User created successfully"));
 			}
 		} catch (Exception e) {
