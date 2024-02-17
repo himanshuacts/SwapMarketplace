@@ -18,9 +18,9 @@ const HomeProducts = (props) => {
 
     return (
         <div className='container-fluid p-0'>
-            <div className='row mx-3 my-5 p-4 home-card-row d-flex flex-row'>
+            <div className='row m-0 p-4 home-card-row d-flex flex-column'>
                 <h2 className='mb-4' style={{ color: 'black' }}>New Arrival</h2>
-                <div className='d-flex justify-content-between w-100'>
+                <div className='d-flex justify-content-around'>
                     <a href='/products/1/1' className='text-decoration-none'>
                         <ProductCard img={product} prodName={"Apple iPhone 13"} prodDesc={'iPhone 13. boasts an advanced dual-camera system that allows you to click mesmerising pictures with immaculate clarity. '} /></a>
                     <a href='/products/1/2' className='text-decoration-none '>
