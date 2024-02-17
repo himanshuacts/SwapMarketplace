@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import "./signUp.css";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 function SignUpForm() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    image: "",
-    fname: "",
-    lname: "",
-    email: "",
+    firstName: "",
+    lastName: "",
+    emailId: "",
     password: "",
-    confirm_password: "",
-    mobile: "",
-    city: "",
+    mobile: 0,
+    rating: 0,
+    cityId: 0,
+    image: null
   });
 
   const handleChange = (e) => {
@@ -17,14 +22,40 @@ function SignUpForm() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleImageChange = (e) => {
+    setFormData({ ...formData, image: e.target.files[0] });
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add form submission logic here
-    console.log("Form submitted:", formData);
+    console.log(formData);
+    const formDataToSend = new FormData();
+    formDataToSend.append('userReqDto', JSON.stringify({
+      "firstName": formData.firstName,
+      "lastName": formData.lastName,
+      "emailId": formData.emailId,
+      "password": formData.password,
+      "mobile": formData.mobile,
+      "rating": formData.rating,
+      "cityId": parseInt(formData.cityId),
+      // "cityId": 1,
+    }))
+    formDataToSend.append("image", formData.image);
+
+    try {
+      await axios.post('http://localhost:8080/swapkart/signup', formDataToSend, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      navigate("/signin");
+    } catch (error) {
+      console.error('Error submitting form:', error.message);
+    }
   };
 
   return (
-    <div className="d-flex justify-content-center align-center signup-bg-img m-3">
+    <div className="d-flex justify-content-center align-center signup-bg-img m-3 pb-5">
       <div class="card p-4 shadow-sm mt-5 signup-container">
         <div class="card-header bg-white">
           <h3>Sign Up</h3>
@@ -39,10 +70,10 @@ function SignUpForm() {
               <input
                 type="text"
                 id="fname"
-                name="fname"
+                name="firstName"
                 className="form-control"
                 size={25}
-                value={formData.fname}
+                value={formData.firstName}
                 onChange={handleChange}
                 required
               />
@@ -55,10 +86,10 @@ function SignUpForm() {
               <input
                 type="text"
                 id="lname"
-                name="lname"
+                name="lastName"
                 className="form-control"
                 size={25}
-                value={formData.lname}
+                value={formData.lastName}
                 onChange={handleChange}
                 required
               />
@@ -71,10 +102,10 @@ function SignUpForm() {
               <input
                 type="email"
                 id="email"
-                name="email"
+                name="emailId"
                 className="form-control"
                 size={30}
-                value={formData.email}
+                value={formData.emailId}
                 onChange={handleChange}
                 required
               />
@@ -91,22 +122,6 @@ function SignUpForm() {
                 className="form-control"
                 size={25}
                 value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="confirm_password" class="signup-label ">
-                Confirm Password:
-              </label>
-              &nbsp;
-              <input
-                type="password"
-                id="confirm_password"
-                name="confirm_password"
-                className="form-control"
-                size={23}
-                value={formData.confirm_password}
                 onChange={handleChange}
                 required
               />
@@ -134,17 +149,17 @@ function SignUpForm() {
               &nbsp;&nbsp;
               <select
                 id="city"
-                name="city"
+                name="cityId"
                 className="form-control"
                 value={formData.city}
                 onChange={handleChange}
                 required
               >
                 <option value="">Select City</option>
-                <option value="mumbai">mumbai</option>
-                <option value="pune">pune</option>
-                <option value="nagpur">nagpur</option>
-                <option value="delhi">delhi</option>
+                <option value="1">mumbai</option>
+                <option value="2">pune</option>
+                <option value="3">nagpur</option>
+                <option value="4">delhi</option>
 
                 {/* Populate cities dynamically from backend */}
               </select>
@@ -155,22 +170,20 @@ function SignUpForm() {
               </label>
               &nbsp;
               <input
-                type="file"
-                id="image"
-                name="image"
-                className="form-control"
-                onChange={handleChange}
+                type="file" accept="image/*" onChange={handleImageChange}
               />
             </div>
           </form>
         </div>
         <div class="card-footer bg-white d-flex justify-content-around">
-          <button type="submit" class="btn btn-success">
-            Sign In
+          <button type="submit" class="btn btn-success" onClick={handleSubmit}>
+            Sign Up
           </button>
-          <button type="button" class="btn btn-danger">
-            Cancel
-          </button>
+          <Link to="/">
+            <button type="button" class="btn btn-danger">
+              Cancel
+            </button>
+          </Link>
         </div>
       </div>
     </div>
