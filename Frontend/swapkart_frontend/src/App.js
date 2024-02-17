@@ -10,6 +10,7 @@ import LogIn from './components/LoginAndSignUp/LogIn';
 import HomePage from './components/homepage/HomePage';
 import AccountSettings from './components/accountsettings/AccountSettings';
 import UpdatePage from './components/updatepage/UpdatePage';
+import ProductDetailsPage from './components/Product/ProductDetails';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'jquery/dist/jquery.min.js';
@@ -48,7 +49,6 @@ function App() {
 
   return (
     <Provider store={store}>
-
       <div className='App-Header'>
         <header className='m-3'>
           {/* Pass the handler to NavBar */}
@@ -61,21 +61,26 @@ function App() {
         {/* {selectedCategory && !showDefault ? (
           <Category category={selectedCategory} />
         ) : (
-          <div> */}
-        {/* Render Corousel and HomeProducts by default */}
-        {/* <Corousel />
+          <div>
+            
+            <Corousel />
             <HomeProducts />
           </div>
         )} */}
+
         {/* <Routes>
           <Route path="/account" element={<AccountSettings user={user} />} />
           <Route path="/update" element={<UpdatePage />} />
         </Routes> */}
+
         <Routes>
           <Route path='/' Component={HomePage} />
           <Route path='/signin' Component={LogIn} />
           <Route path='/signup' Component={SignUpForm} />
+          <Route path='/:cname/:cid' Component={Category} />
+          <Route path="/products/:uid/:pid" Component={ProductDetailsPage}/>
         </Routes>
+        
         <footer>
           <Footer />
         </footer>
