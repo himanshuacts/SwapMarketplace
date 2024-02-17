@@ -19,7 +19,7 @@ function LogInForm() {
   }
 
   const handleSubmit = () => {
-    axios.post('http://localhost:8080/swapkart/SwapKart/signin', {
+    axios.post('http://localhost:8080/swapkart/signin', {
       email: formData.email,
       password: formData.password
     }).then((res) => {
