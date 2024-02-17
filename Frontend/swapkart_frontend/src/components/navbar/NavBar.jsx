@@ -41,11 +41,11 @@ const NavBar = ({ onLogoClick }) => {
         <div className="col-2 d-flex justify-content-center">
           {userData ? <div className="dropdown">
             <button className="btn btn-white dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-              <img src={`data:image/jpeg;base64,${userData.image}`} alt="Base64 Image" className='login-img mr-2'/>
+              <img src={`data:image/jpeg;base64,${userData.image}`} alt="Base64 Image" className='login-img mr-2' />
               <span className='mr-2 profile'>{userData.firstName} {userData.lastName}</span>
             </button>
             <div className="dropdown-menu shadow-sm">
-              <a className="dropdown-item" href="#">Account Setting</a>
+              <a className="dropdown-item" href="/account">Account Setting</a>
               <a className="dropdown-item" href="#">Your Products</a>
               <a className="dropdown-item" href="#">Wish List</a>
               <a className="dropdown-item" href="/" onClick={() => {

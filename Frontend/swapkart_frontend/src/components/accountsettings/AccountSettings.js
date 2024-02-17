@@ -42,55 +42,57 @@ const AccountSettings = ({ user }) => {
 
     return (
 
-        <div className="container">
+        <div className="container-lg-6">
             <div className="card-header text-center">
                 <h2>Account Settings</h2>
             </div>
-
-            <div className="row">
-                <div className="col-md-3 photo-container text-center">
-                    <img src={user.profileImage || 'default-image-url.jpg'} alt="Profile" className="img-fluid mb-3" />
-                </div>
-                <div className="col-md-9">
-                    <div className="row">
-                        <div className="col-md-4">
-                            <p className="user-info">
-                                <strong>Name</strong>
-                            </p>
-                            <p className="user-info">
-                                <strong>Email</strong>
-                            </p>
-                            <p className="user-info">
-                                <strong>Phone No</strong>
-                            </p>
-                            <p className="user-info">
-                                <strong>City</strong>
-                            </p>
-                        </div>
-                        <div className="col-md-8">
-                            <p className="user-info">
-                                : {user.firstName} {user.lastName}
-                            </p>
-                            <p className="user-info">
-                                : {user.email}
-                            </p>
-                            <p className="user-info">
-                                : {user.mobileNumber}
-                            </p>
-                            <p className="user-info">
-                                :  {user.city}
-                            </p>
+            <div className="container-lg-4">
+                <div className="row">
+                    <div className="col-md-3 photo-container text-center">
+                        <img src={user.profileImage || 'default-image-url.jpg'} alt="Profile" className="img-fluid mb-3" />
+                    </div>
+                    <div className="col-md-9">
+                        <div className="row">
+                            <div className="col-md-4">
+                                <p className="user-info">
+                                    <strong>Name</strong>
+                                </p>
+                                <p className="user-info">
+                                    <strong>Email</strong>
+                                </p>
+                                <p className="user-info">
+                                    <strong>Phone No</strong>
+                                </p>
+                                <p className="user-info">
+                                    <strong>City</strong>
+                                </p>
+                            </div>
+                            <div className="col-md-8">
+                                <p className="user-info">
+                                    : {user.firstName} {user.lastName}
+                                </p>
+                                <p className="user-info">
+                                    : {user.email}
+                                </p>
+                                <p className="user-info">
+                                    : {user.mobileNumber}
+                                </p>
+                                <p className="user-info">
+                                    : {user.city}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="d-flex justify-content-between align-items-center">
-                <button className="btn btn-primary btn-lg" onClick={handleEditProfile}>
-                    Edit Profile
-                </button>
-                <button className="btn btn-danger btn-lg" onClick={handleDeleteAccount}>
-                    Delete Account
-                </button>
+
+                <div className="d-flex justify-content-between align-items-center">
+                    <button className="btn btn-primary btn-lg" onClick={handleEditProfile}>
+                        Edit Profile
+                    </button>
+                    <button className="btn btn-danger btn-lg" onClick={handleDeleteAccount}>
+                        Delete Account
+                    </button>
+                </div>
             </div>
         </div>
     );
