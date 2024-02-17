@@ -113,7 +113,7 @@ const Category = () => {
 
   return (
     <div className="container-fluid mt-5 mb-3">
-      <div className="card" style={{ borderRadius: "10px", boxShadow: "0px 0px 10px rgba(0,0,0,0.3)" }}>
+      <div className="card w-100 m-0" style={{ borderRadius: "10px", boxShadow: "0px 0px 10px rgba(0,0,0,0.3)" }}>
         <div className="row">
           <div className="col-md-12">
             <header>
