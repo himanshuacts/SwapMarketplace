@@ -13,7 +13,10 @@ const Category = () => {
   const {cname, cid} = useParams();
 
   // Get products from Redux store
-  const products = useSelector((state) => state.prodList.data);
+  const products = useSelector((state) => {
+    const allProducts = state.prodList.data;
+    return allProducts.length > 0 ? allProducts.filter(product => product.category.categoryId == cid) : [];
+  });
 
   useEffect(() => {
     dispatch(fetchProductList()); // Fetch products when component mounts

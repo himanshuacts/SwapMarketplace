@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Route, Router, Routes } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -17,12 +17,24 @@ import ProductDetailsPage from './components/Product/ProductDetails';
 import Wishlist from './components/wishlist/Wishlist';
 import MyProduct from './components/myProduct/MyProduct';
 import AddProductForm from './components/addproductform/AddProductForm';
+import { fetchProductList } from './redux/HomeProducts/Action';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'jquery/dist/jquery.min.js';
 import './App.css';
 
 function App() {
+  // Fetch the product list from database into redux store
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      fetchProductList();
+    }, 5000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   // State to track the selected category
   const [selectedCategory, setSelectedCategory] = useState(null);
   // State to track whether to show default components or not
