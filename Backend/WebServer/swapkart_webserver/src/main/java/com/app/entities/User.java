@@ -35,7 +35,7 @@ public class User {
 	@Column(name = "email_id", columnDefinition = "varchar(50)", unique = true)
 	private String emailId;
 
-	@Column(name = "password", columnDefinition = "varchar(12)")
+	@Column(name = "password", columnDefinition = "varchar(255)")
 	private String password;
 
 	@Column(name = "mobile", columnDefinition = "bigint")

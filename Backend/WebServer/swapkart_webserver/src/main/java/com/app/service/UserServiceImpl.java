@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,6 +31,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private ObjectMapper objectMapper;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public User createUser(String userReqJson, MultipartFile file) {
@@ -43,8 +47,9 @@ public class UserServiceImpl implements UserService {
 			user.setFirstName(userReqDto.getFirstName());
 			user.setLastName(userReqDto.getLastName());
 			user.setEmailId(userReqDto.getEmailId());
-			user.setPassword(userReqDto.getPassword());
-			user.setMobile(userReqDto.getMobile());
+			String encodedPassword = passwordEncoder.encode(userReqDto.getPassword());
+		    user.setPassword(encodedPassword);
+		    user.setMobile(userReqDto.getMobile());
 			user.setCity(city);
 			user.setRating(userReqDto.getRating());
 			user.setUserImage(file.getBytes());
@@ -57,8 +62,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public AuthRespDTO signIn(AuthReqDTO request) {
-		User user = userRepository.findByEmailIdAndPassword(request.getEmail(), request.getPassword())
-				.orElseThrow(() -> new ResourceNotFoundException("Invalid user login : bad credentials!!!!!"));
+		User user = userRepository.findByEmailId(request.getEmail()) // Find by email only
+		        .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+		// Verify password securely using encoder
+	    if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+	        throw new ResourceNotFoundException("Invalid user login: Bad credentials"); // Don't specify which credential failed
+	    }
 		City city = cityRepository.findById(user.getCity().getCityId()).orElseThrow();
 		AuthRespDTO dto = new AuthRespDTO();
 		dto.setId(user.getUserId());
