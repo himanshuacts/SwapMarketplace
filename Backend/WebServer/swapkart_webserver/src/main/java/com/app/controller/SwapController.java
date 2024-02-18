@@ -19,7 +19,7 @@ import com.app.entities.User;
 import com.app.service.SwapService;
 
 @RestController
-@RequestMapping("/SwapKart/swap")
+@RequestMapping("/swap")
 public class SwapController {
 
 	@Autowired
