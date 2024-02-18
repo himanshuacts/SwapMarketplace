@@ -9,14 +9,14 @@ const ProductCard = (product) => {
     <Fragment>
       <Link to={`/products/${product.uid}/${product.id}`} className="text-decoration-none">
         <div className="card border-0 product-card m-0" style={{ width: '18rem', padding: '0px', height: '370px' }}>
-          <img className="card-img-top product-image" src={product.img} alt={product.prodName} />
+          <img className="card-img-top product-img" src={product.img} alt={product.prodName} />
           <div className="card-body ">
             <h5 className='card-title product-card-title'>{product.prodName}</h5>
             <p className='card-text product-card-desc'>{product.prodDesc}</p>
           </div>
           <div className='card-footer d-flex justify-content-between align-items-center  bg-white'>
             <div className='d-flex align-items-center'>
-              <img src={avatar} className='product-card-owner rounded-circle mr-3' alt="Owner Avatar" />
+              <img src={product.ownerimg} className='product-card-owner rounded-circle mr-3' alt="Owner Avatar" />
               <span className='product-owner-name'>{product.owner}</span>
             </div>
             <div className='stars owner-rating-home'>

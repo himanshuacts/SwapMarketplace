@@ -174,11 +174,12 @@ const Category = () => {
                 id={product.productId}
                 uid={product.user.userId}
                 category={product.category.categoryId}
-                img={firstProduct}
+                img={`data:image/jpeg;base64,${product.firstImage}`}
                 prodName={product.productName}
                 prodDesc={product.productDescription}
                 prodBrand={product.productBrand}
                 price={product.price}
+                ownerimg={`data:image/jpeg;base64,${product.user.userImage}`}
                 owner={product.user.firstName + " " + product.user.lastName}
                 rating={product.user.rating}
               />
