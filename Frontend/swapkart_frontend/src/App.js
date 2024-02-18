@@ -18,6 +18,7 @@ import Wishlist from './components/wishlist/Wishlist';
 import MyProduct from './components/myProduct/MyProduct';
 import AddProductForm from './components/addproductform/AddProductForm';
 import { fetchProductList } from './redux/HomeProducts/Action';
+import SwapWindow from './components/swapwindow/SwapWindow'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'jquery/dist/jquery.min.js';
@@ -87,12 +88,11 @@ function App() {
           <Route path='/MyProducts' Component={MyProduct} />
           <Route path='/AddProduct' Component={AddProductForm} />
           <Route path='/WishList' Component={Wishlist} />
-          <Route path='/' Component={HomePage} />
-        </Routes>
-        <Routes>
           <Route path="/account" element={<AccountSettings />} />
           <Route path="/update" element={<UpdatePage />} />
+          <Route path='/contact-owner/:pid/:uid' Component={SwapWindow}/>
         </Routes>
+
 
         <footer>
           <Footer />
