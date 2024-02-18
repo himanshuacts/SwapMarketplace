@@ -73,7 +73,11 @@ const ProductDetailsPage = () => {
   };
 
   const handleContactOwnerClick = () => {
-    console.log('Contact Owner clicked');
+    if(user){
+      navigate(`/contact-owner/${product.productId}/${user.id}`);
+    } else{
+      navigate("/signin");
+    }
   };
 
   if (!product) {
