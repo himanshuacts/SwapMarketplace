@@ -1,34 +1,44 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AccountSettings.css'; // Create a CSS file for styling (AccountSettings.css)
+import axios from 'axios'; // Import Axios
 
-const AccountSettings = ({ user }) => {
+import './AccountSettings.css'; // Make sure to create a CSS file for styling (AccountSettings.css)
+
+const AccountSettings = () => {
     const navigate = useNavigate();
 
+    // State to store user data and userId
+    const [user, setUser] = useState({});
+    const [id, setUserId] = useState('');
 
+    useEffect(() => {
+        // Fetch user data from localStorage
+        const storedUser = JSON.parse(localStorage.getItem('User'));
+
+        if (storedUser) {
+            // Set user data to state
+            setUser(storedUser);
+            console.log('User:', storedUser);
+            // Set userId to state
+            setUserId(storedUser.id);
+            console.log('User ID:', storedUser.id);
+        }
+    }, []); // Empty dependency array ensures this effect runs only once on component mount
 
     const handleEditProfile = () => {
         navigate('/update');
     };
-
+    
     const handleDeleteAccount = async () => {
         try {
             // Simulate an API call to delete the account
-            const response = await fetch('/api/deleteAccount', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                // Pass any necessary data or authentication tokens in the body
-                body: JSON.stringify({
-                    userId: user.id, // Assuming your user object has an id property
-                }),
-            });
+            const response = await axios.delete(`http://localhost:8080/swapkart/user/${id}`);
 
-            if (response.ok) {
+            if (response.status === 200) {
                 // Account deleted successfully
                 console.log('Account deleted successfully!');
+                // Remove user from local storage
+                localStorage.removeItem('User');
                 // Redirect to the home page or login page after deletion
                 navigate('/');
             } else {
@@ -41,7 +51,6 @@ const AccountSettings = ({ user }) => {
     };
 
     return (
-
         <div className="container-lg-6">
             <div className="card-header text-center">
                 <h2>Account Settings</h2>
@@ -49,22 +58,22 @@ const AccountSettings = ({ user }) => {
             <div className="container-lg-4">
                 <div className="row">
                     <div className="col-md-3 photo-container text-center">
-                        <img src={user.profileImage || 'default-image-url.jpg'} alt="Profile" className="img-fluid mb-3" />
+                        <img src={user.user_image || 'default-image-url.jpg'} alt="Profile" className="img-fluid mb-3" />
                     </div>
                     <div className="col-md-9">
                         <div className="row">
                             <div className="col-md-4">
                                 <p className="user-info">
-                                    <strong>Name</strong>
+                                    Name
                                 </p>
                                 <p className="user-info">
-                                    <strong>Email</strong>
+                                    Email
                                 </p>
                                 <p className="user-info">
-                                    <strong>Phone No</strong>
+                                    Phone No
                                 </p>
                                 <p className="user-info">
-                                    <strong>City</strong>
+                                    City
                                 </p>
                             </div>
                             <div className="col-md-8">
@@ -72,13 +81,13 @@ const AccountSettings = ({ user }) => {
                                     : {user.firstName} {user.lastName}
                                 </p>
                                 <p className="user-info">
-                                    : {user.email}
+                                    : {user.emailId}
                                 </p>
                                 <p className="user-info">
-                                    : {user.mobileNumber}
+                                    : {user.mobile}
                                 </p>
                                 <p className="user-info">
-                                    : {user.city}
+                                    : {user.cityName}
                                 </p>
                             </div>
                         </div>

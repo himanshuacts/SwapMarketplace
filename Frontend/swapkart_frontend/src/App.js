@@ -88,8 +88,11 @@ function App() {
           <Route path='/MyProducts' Component={MyProduct} />
           <Route path='/AddProduct' Component={AddProductForm} />
           <Route path='/WishList' Component={Wishlist} />
-		  <Route path='/contact-owner/:pid/:uid' Component={SwapWindow}/>
+          <Route path="/account" element={<AccountSettings />} />
+          <Route path="/update" element={<UpdatePage />} />
+          <Route path='/contact-owner/:pid/:uid' Component={SwapWindow}/>
         </Routes>
+
 
         <footer>
           <Footer />
