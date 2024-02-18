@@ -1,4 +1,7 @@
 import React, { Fragment, useState } from 'react';
+import { Route, Router, Routes } from 'react-router';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import NavBar from './components/navbar/NavBar';
 import CategoryBar from './components/category/CategoryBar';
 import Footer from './components/footer/Footer';
@@ -12,23 +15,12 @@ import AccountSettings from './components/accountsettings/AccountSettings';
 import UpdatePage from './components/updatepage/UpdatePage';
 import ProductDetailsPage from './components/Product/ProductDetails';
 import Wishlist from './components/wishlist/Wishlist';
+import MyProduct from './components/myProduct/MyProduct';
+import AddProductForm from './components/addproductform/AddProductForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'jquery/dist/jquery.min.js';
 import './App.css';
-import { Provider } from 'react-redux';
-import store from './redux/store';
-import { Route, Router, Routes } from 'react-router';
-
-// const user = {
-//   id: 1,
-//   firstName: 'Pratik',
-//   lastName: 'Patil',
-//   email: 'Pratik7895@gamil.com',
-//   mobileNumber: '9146353674',
-//   city: 'Berlin',
-//   profileImage: 'default-image-url.jpg',
-// };
 
 function App() {
   // State to track the selected category
@@ -79,10 +71,12 @@ function App() {
           <Route path='/signin' Component={LogIn} />
           <Route path='/signup' Component={SignUpForm} />
           <Route path='/:cname/:cid' Component={Category} />
-          <Route path="/products/:uid/:pid" Component={ProductDetailsPage}/>
-	        <Route path='/WishList' Component={Wishlist}/>
+          <Route path='/products/:uid/:pid' Component={ProductDetailsPage} />
+          <Route path='/MyProducts' Component={MyProduct} />
+          <Route path='/AddProduct' Component={AddProductForm} />
+          <Route path='/WishList' Component={Wishlist} />
         </Routes>
-        
+
         <footer>
           <Footer />
         </footer>

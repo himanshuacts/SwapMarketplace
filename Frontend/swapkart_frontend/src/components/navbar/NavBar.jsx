@@ -46,14 +46,14 @@ const NavBar = ({ onLogoClick }) => {
             </button>
             <div className="dropdown-menu shadow-sm">
               <a className="dropdown-item" href="/account">Account Setting</a>
-              <a className="dropdown-item" href="#">Your Products</a>
+              <Link to="/MyProducts" className="dropdown-item">Your Products</Link>
               <Link to="/WishList" className="dropdown-item">Wish List</Link>
               <a className="dropdown-item" href="/" onClick={() => {
                 localStorage.removeItem("User")
               }}>Log Out</a>
             </div>
           </div> : <Link to="/signin"><button type="submit" className="btn btn-primary mr-2">
-            LogIn/SignUp
+            LogIn / SignUp
           </button></Link>}
         </div>
       </div>
