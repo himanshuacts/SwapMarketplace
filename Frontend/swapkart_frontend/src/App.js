@@ -87,6 +87,11 @@ function App() {
           <Route path='/MyProducts' Component={MyProduct} />
           <Route path='/AddProduct' Component={AddProductForm} />
           <Route path='/WishList' Component={Wishlist} />
+          <Route path='/' Component={HomePage} />
+        </Routes>
+        <Routes>
+          <Route path="/account" element={<AccountSettings />} />
+          <Route path="/update" element={<UpdatePage />} />
         </Routes>
 
         <footer>
