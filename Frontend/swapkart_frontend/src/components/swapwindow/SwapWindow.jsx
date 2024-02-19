@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { IoSend } from "react-icons/io5";
 import { useParams } from 'react-router';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 import './SwapWindow.css';
 import exchangeProduct from '../../images/exch_prod.jpg'
 import axios, { all } from 'axios';
@@ -13,6 +14,8 @@ const SwapWindow = (props) => {
     const [userProduct, setUserProduct] = useState();
     const [msgState, setMsgState] = useState();
     const [allMsg, setAllMessage] = useState();
+    const [transaction, setTransaction] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Fetch user details from local storage on component mount
@@ -28,9 +31,39 @@ const SwapWindow = (props) => {
         return state.prodList.data.filter(prod => prod.user.userId == uid);
     });
 
-    const handleProductChangeEvent = (event) => {
+    const handleProductChangeEvent = async (event) => {
         const product_id = event.target.value;
         setUserProduct(userProducts.find(prod => prod.productId == product_id));
+        const swapReqDto = {
+            userProductId: product_id,
+            ownerProductId: ownerProduct.productId
+        }
+        console.log(swapReqDto);
+        try {
+            //url to be changed
+            const response = await axios.post(`http://localhost:8080/swapkart/swap/initiate/${user.id}`, swapReqDto);
+            console.log(response.data);
+            setTransaction(response.data.message);
+            console.log(transaction);
+        } catch (error) {
+            console.log("error initiating swap.." + error);
+        }
+    }
+
+    const handleSwapProduct = async () => {
+        console.log(transaction);
+        try {
+            const response = await axios.post('http://localhost:8080/swapkart/swap/complete', null, {
+                params: {
+                    transactionId: parseInt(transaction)
+                }
+            });
+            console.log(response.data);
+            navigate('/');
+        } catch (error) {
+            console.log("Could not complete transaction.." + error);
+        }
+
     }
 
     useEffect(() => {
@@ -121,7 +154,7 @@ const SwapWindow = (props) => {
                                 <IoSend className='bg-success text-white m-0 rounded-circle mr-4' style={{ 'fontSize': '40px', 'padding': '10px', 'cursor': 'pointer' }} onClick={handleSendMessageHandler}/>
                             </div>
                         </div>
-                        <button className='btn btn-primary mt-4'>Swap Product</button>
+                        <button className='btn btn-primary mt-4' onClick={handleSwapProduct}>Swap Product</button>
                     </div>
                 </div>
             </div>
