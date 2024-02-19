@@ -1,0 +1,16 @@
+
+/* SearchResultsList.css */
+
+.results-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000; /* Ensure the overlay is above other elements */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-height: 200px; /* Adjust as needed */
+  overflow-y: auto; /* Add scrollbar if necessary */
+}
+
