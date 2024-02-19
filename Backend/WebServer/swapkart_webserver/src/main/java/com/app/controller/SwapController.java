@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.dto.ApiResponse;
 import com.app.dto.SwapReqDTO;
 import com.app.dto.UserReqDTO;
+import com.app.entities.Transaction;
 import com.app.entities.User;
 import com.app.service.SwapService;
 
@@ -32,8 +33,8 @@ public class SwapController {
 			}
 
 			try {
-				swapService.initiateSwap(userId, swapRequest);
-				return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse("Swap initiated successfully"));
+				Transaction transaction= swapService.initiateSwap(userId, swapRequest);
+				return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse(""+transaction.getTransactionId()));
 			} catch (Exception e) {
 				e.printStackTrace();
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse("Unable to initiate swap"));

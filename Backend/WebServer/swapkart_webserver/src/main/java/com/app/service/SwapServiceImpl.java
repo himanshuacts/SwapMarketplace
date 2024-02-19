@@ -77,7 +77,7 @@ public class SwapServiceImpl implements SwapService {
 		transactionHistoryRepository.save(transactionHistory);
 
 		//Delete the transaction from the transaction table
-		transactionRepository.delete(transaction);
+		transactionRepository.deleteByUserIdAndProductId(transaction.getUserId(), transaction.getOwnerProductId());
 		productRepository.deleteById(transactionHistory.getUserProductId());
 		productRepository.deleteById(transactionHistory.getOwnerProductId());
 	}
