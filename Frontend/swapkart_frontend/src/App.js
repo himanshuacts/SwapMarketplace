@@ -17,6 +17,7 @@ import ProductDetailsPage from './components/Product/ProductDetails';
 import Wishlist from './components/wishlist/Wishlist';
 import MyProduct from './components/myProduct/MyProduct';
 import AddProductForm from './components/addproductform/AddProductForm';
+import Transactions from './components/transactions/Transactions';
 import { fetchProductList } from './redux/HomeProducts/Action';
 import SwapWindow from './components/swapwindow/SwapWindow'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -63,22 +64,6 @@ function App() {
           <CategoryBar onCategoryChange={handleCategoryChange} />
         </header>
 
-        {/* Render Category component or Corousel and HomeProducts based on selected category and showDefault state */}
-        {/* {selectedCategory && !showDefault ? (
-          <Category category={selectedCategory} />
-        ) : (
-          <div>
-            
-            <Corousel />
-            <HomeProducts />
-          </div>
-        )} */}
-
-        {/* <Routes>
-          <Route path="/account" element={<AccountSettings user={user} />} />
-          <Route path="/update" element={<UpdatePage />} />
-        </Routes> */}
-
         <Routes>
           <Route path='/' Component={HomePage} />
           <Route path='/signin' Component={LogIn} />
@@ -86,13 +71,13 @@ function App() {
           <Route path='/:cname/:cid' Component={Category} />
           <Route path='/products/:uid/:pid' Component={ProductDetailsPage} />
           <Route path='/MyProducts' Component={MyProduct} />
+          <Route path='/Transactions' Component={Transactions} />
           <Route path='/AddProduct' Component={AddProductForm} />
           <Route path='/WishList' Component={Wishlist} />
           <Route path="/account" element={<AccountSettings />} />
           <Route path="/update" element={<UpdatePage />} />
-          <Route path='/contact-owner/:pid/:uid' Component={SwapWindow}/>
+          <Route path='/contact-owner/:pid/:uid' Component={SwapWindow} />
         </Routes>
-
 
         <footer>
           <Footer />

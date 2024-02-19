@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./Wishlist.css";
-import axios from "axios";
+import axios from 'axios';
+import { Link } from "react-router-dom";
 
 const Wishlist = () => {
   const [products, setProducts] = useState([]);
@@ -15,26 +16,20 @@ const Wishlist = () => {
   const fetchWishlist = async () => {
     try {
       // Retrieve user details from local storage
-      const storedUser = JSON.parse(localStorage.getItem("User"));
+      const storedUser = JSON.parse(localStorage.getItem('User'));
 
       if (storedUser) {
         // Use the user ID from the stored user details
         const userId = storedUser.id; // Update 'userId' to the actual property name in your user object
 
-        const response = await axios.get(
-          `http://localhost:8080/swapkart/Wishlist/${userId}`
-        );
+        const response = await axios.get(`http://localhost:8080/swapkart/Wishlist/${userId}`);
         console.log(response);
         // Extract product IDs from the wishlist response
-        const productIds = response.data.map(
-          (wishlistItem) => wishlistItem.productId
-        );
+        const productIds = response.data.map((wishlistItem) => wishlistItem.productId);
 
         // Fetch product details for each product ID
         const productDetailsPromises = productIds.map(async (productId) => {
-          const productResponse = await axios.get(
-            `http://localhost:8080/swapkart/products/${userId}/${productId}`
-          );
+          const productResponse = await axios.get(`http://localhost:8080/swapkart/products/${userId}/${productId}`);
           return productResponse.data;
         });
         // Wait for all product details requests to complete
@@ -45,30 +40,29 @@ const Wishlist = () => {
           productDetails: productDetails[index], // Assuming the fetched product details contain image and name
         }));
         setProducts(updatedProducts);
+        console.log(productDetails);
       } else {
-        console.error("User details not found in local storage.");
+        console.error('User details not found in local storage.');
       }
     } catch (error) {
-      console.error("Error fetching wishlist:", error);
+      console.error('Error fetching wishlist:', error);
     }
   };
 
   const removeProduct = async (id) => {
     try {
-      await axios.delete(
-        `http://localhost:8080/swapkart/Wishlist/wishes/${id}`
-      );
+      await axios.delete(`http://localhost:8080/swapkart/Wishlist/wishes/${id}`);
       // After successfully removing the product, fetch the updated wishlist
       fetchWishlist();
     } catch (error) {
-      console.error("Error removing product:", error);
+      console.error('Error removing product:', error);
     }
   };
 
   const clearAllProducts = async () => {
     try {
       // Retrieve user details from local storage
-      const storedUser = JSON.parse(localStorage.getItem("User"));
+      const storedUser = JSON.parse(localStorage.getItem('User'));
 
       if (storedUser) {
         // Use the user ID from the stored user details
@@ -78,10 +72,10 @@ const Wishlist = () => {
         // After successfully clearing all products, fetch the updated wishlist
         fetchWishlist();
       } else {
-        console.error("User details not found in local storage.");
+        console.error('User details not found in local storage.');
       }
     } catch (error) {
-      console.error("Error clearing wishlist:", error);
+      console.error('Error clearing wishlist:', error);
     }
   };
 
@@ -103,21 +97,20 @@ const Wishlist = () => {
                       style={{
                         width: "50px",
                         height: "50px",
-                        borderRadius: "10px",
+                        borderRadius: "10px"
                       }}
                     />
                   </td>
-                  <td
-                    style={{ verticalAlign: "middle", paddingRight: "400px" }}
-                  >
-                    {wishlistItem.productDetails.productName}
+                  <td style={{ verticalAlign: "middle", paddingRight: "400px" }}>
+                    <Link to={`/products/${wishlistItem.productDetails.user.userId}/${wishlistItem.productId}`} className="text-dark text-decoration-none">
+                      {wishlistItem.productDetails.productName}
+                    </Link>
                   </td>
                   <td style={{ verticalAlign: "middle" }}>
                     <FontAwesomeIcon
                       icon={faTrash}
                       onClick={() => removeProduct(wishlistItem.wishId)}
                       style={{ cursor: "pointer" }}
-                      className="text-danger"
                     />
                   </td>
                 </tr>
