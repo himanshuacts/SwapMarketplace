@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./MyProduct.css"; // Import the CSS file
@@ -22,15 +22,17 @@ const MyProduct = () => {
         // Use the user id from the stored user details
         const userId = storedUser.id;
 
-        const response = await axios.get(`http://localhost:8080/swapkart/products/${userId}`);
+        const response = await axios.get(
+          `http://localhost:8080/swapkart/products/${userId}`
+        );
         setProducts(response.data);
       } else {
         console.error("User details not found in local storage.");
       }
     } catch (error) {
-      console.error('Error fetching my products : ', error);
+      console.error("Error fetching my products : ", error);
     }
-  }
+  };
 
   const removeProduct = async (id) => {
     try {
@@ -38,7 +40,9 @@ const MyProduct = () => {
 
       if (storedUser) {
         const userId = storedUser.id;
-        const response = await axios.delete(`http://localhost:8080/swapkart/products/${userId}/${id}`);
+        const response = await axios.delete(
+          `http://localhost:8080/swapkart/products/${userId}/${id}`
+        );
         console.log(response);
         fetchMyProducts();
       } else {
@@ -81,6 +85,7 @@ const MyProduct = () => {
                       icon={faTrash}
                       onClick={() => removeProduct(product.productId)}
                       style={{ cursor: "pointer" }}
+                      className="text-danger"
                     />
                   </td>
                 </tr>
@@ -90,9 +95,7 @@ const MyProduct = () => {
         </div>
         <div className="card-footer bg-white d-flex justify-content-right">
           <Link to="/AddProduct">
-            <button className="btn btn-primary">
-              Add Product
-            </button>
+            <button className="btn btn-primary">Add Product</button>
           </Link>
         </div>
       </div>

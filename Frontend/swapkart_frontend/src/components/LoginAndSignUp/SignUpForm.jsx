@@ -14,7 +14,7 @@ function SignUpForm() {
     mobile: 0,
     rating: 0,
     cityId: 0,
-    image: null
+    image: null,
   });
 
   const handleChange = (e) => {
@@ -24,33 +24,40 @@ function SignUpForm() {
 
   const handleImageChange = (e) => {
     setFormData({ ...formData, image: e.target.files[0] });
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     const formDataToSend = new FormData();
-    formDataToSend.append('userReqDto', JSON.stringify({
-      "firstName": formData.firstName,
-      "lastName": formData.lastName,
-      "emailId": formData.emailId,
-      "password": formData.password,
-      "mobile": formData.mobile,
-      "rating": formData.rating,
-      "cityId": parseInt(formData.cityId),
-      // "cityId": 1,
-    }))
+    formDataToSend.append(
+      "userReqDto",
+      JSON.stringify({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        emailId: formData.emailId,
+        password: formData.password,
+        mobile: formData.mobile,
+        rating: formData.rating,
+        cityId: parseInt(formData.cityId),
+        // "cityId": 1,
+      })
+    );
     formDataToSend.append("image", formData.image);
 
     try {
-      await axios.post('http://localhost:8080/swapkart/signup', formDataToSend, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+      await axios.post(
+        "http://localhost:8080/swapkart/signup",
+        formDataToSend,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
-      });
+      );
       navigate("/signin");
     } catch (error) {
-      console.error('Error submitting form:', error.message);
+      console.error("Error submitting form:", error.message);
     }
   };
 
@@ -125,6 +132,10 @@ function SignUpForm() {
                 onChange={handleChange}
                 required
               />
+              <small id="emailHelp" class="form-text text-muted">
+                Password must contain atleast one captial letter, one special
+                character and one number
+              </small>
             </div>
             <div className="form-group">
               <label htmlFor="mobile" class="signup-label ">
@@ -170,7 +181,9 @@ function SignUpForm() {
               </label>
               &nbsp;
               <input
-                type="file" accept="image/*" onChange={handleImageChange}
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
               />
             </div>
           </form>
