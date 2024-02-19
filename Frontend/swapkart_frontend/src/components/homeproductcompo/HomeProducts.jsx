@@ -6,6 +6,7 @@ import { fetchProductList } from "../../redux/HomeProducts/Action";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const HomeProducts = ({ prodList, fetchProducts }) => {
   useEffect(() => {
@@ -20,7 +21,8 @@ const HomeProducts = ({ prodList, fetchProducts }) => {
     if (prodList.data.length > 0) {
       const productsCopy = [...prodList.data];
       const selected = [];
-      for (let i = 0; i < 4; i++) {
+      const size = productsCopy.length < 4 ? productsCopy.length : 4;
+      for (let i = 0; i < size; i++) {
         const randomIndex = Math.floor(Math.random() * productsCopy.length);
         selected.push(productsCopy.splice(randomIndex, 1)[0]);
       }
@@ -35,12 +37,8 @@ const HomeProducts = ({ prodList, fetchProducts }) => {
           New Arrival
         </h2>
         <div className="d-flex justify-content-around">
-          {selectedProducts.map((product, index) => (
-            <a
-              key={index}
-              href={`/products/1/${product.id}`}
-              className="text-decoration-none"
-            >
+          {selectedProducts.map(product => (
+            <Link to={`/products/${product.user.userId}/${product.productId}`} className="text-decoration-none">
               <ProductCard
                 id={product.productId}
                 uid={product.user.userId}
@@ -54,8 +52,9 @@ const HomeProducts = ({ prodList, fetchProducts }) => {
                 owner={product.user.firstName + " " + product.user.lastName}
                 rating={product.user.rating}
               />
-            </a>
+            </Link>
           ))}
+
         </div>
       </div>
     </div>
