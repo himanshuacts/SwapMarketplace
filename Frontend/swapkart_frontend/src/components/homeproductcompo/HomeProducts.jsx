@@ -37,8 +37,11 @@ const HomeProducts = ({ prodList, fetchProducts }) => {
           New Arrival
         </h2>
         <div className="d-flex justify-content-around">
-          {selectedProducts.map(product => (
-            <Link to={`/products/${product.user.userId}/${product.productId}`} className="text-decoration-none">
+          {selectedProducts.map((product) => (
+            <Link
+              to={`/products/${product.user.userId}/${product.productId}`}
+              className="text-decoration-none"
+            >
               <ProductCard
                 id={product.productId}
                 uid={product.user.userId}
@@ -54,7 +57,6 @@ const HomeProducts = ({ prodList, fetchProducts }) => {
               />
             </Link>
           ))}
-
         </div>
       </div>
     </div>
