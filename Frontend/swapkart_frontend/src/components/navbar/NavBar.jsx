@@ -18,7 +18,7 @@ const NavBar = ({ onLogoClick }) => {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [])
+  }, []);
 
   return (
     <nav className="container-fluid header-nav bg-white shadow-sm border-bottom rounded-top">
@@ -39,22 +39,51 @@ const NavBar = ({ onLogoClick }) => {
           </div>
         </div>
         <div className="col-2 d-flex justify-content-center">
-          {userData ? <div className="dropdown">
-            <button className="btn btn-white dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-              <img src={`data:image/jpeg;base64,${userData.image}`} alt="Base64 Image" className='login-img mr-2' />
-              <span className='mr-2 profile'>{userData.firstName} {userData.lastName}</span>
-            </button>
-            <div className="dropdown-menu shadow-sm">
-              <a className="dropdown-item" href="/account">Account Setting</a>
-              <Link to="/MyProducts" className="dropdown-item">Your Products</Link>
-              <Link to="/WishList" className="dropdown-item">Wish List</Link>
-              <a className="dropdown-item" href="/" onClick={() => {
-                localStorage.removeItem("User")
-              }}>Log Out</a>
+          {userData ? (
+            <div className="dropdown">
+              <button
+                className="btn btn-white dropdown-toggle"
+                type="button"
+                data-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src={`data:image/jpeg;base64,${userData.image}`}
+                  alt="Base64 Image"
+                  className="login-img mr-2"
+                />
+                <span className="mr-2 profile  text-capitalize">
+                  {userData.firstName} {userData.lastName}
+                </span>
+              </button>
+              <div className="dropdown-menu shadow-sm">
+                <a className="dropdown-item" href="/account">
+                  Account Setting
+                </a>
+                <Link to="/MyProducts" className="dropdown-item">
+                  Your Products
+                </Link>
+                <Link to="/WishList" className="dropdown-item">
+                  Wish List
+                </Link>
+                <a
+                  className="dropdown-item"
+                  href="/"
+                  onClick={() => {
+                    localStorage.removeItem("User");
+                  }}
+                >
+                  Log Out
+                </a>
+              </div>
             </div>
-          </div> : <Link to="/signin"><button type="submit" className="btn btn-primary mr-2">
-            LogIn / SignUp
-          </button></Link>}
+          ) : (
+            <Link to="/signin">
+              <button type="submit" className="btn btn-primary mr-2">
+                LogIn / SignUp
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

@@ -6,7 +6,9 @@ import "./AddProductForm.css";
 const AddProductForm = () => {
   const navigate = useNavigate();
   const today = new Date();
-  const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+  const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1)
+    .toString()
+    .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`;
 
   const [formData, setFormData] = useState({
     productName: "",
@@ -18,7 +20,7 @@ const AddProductForm = () => {
     userId: "",
     firstImage: "",
     secondImage: "",
-    thirdImage: ""
+    thirdImage: "",
   });
 
   const handleChange = (e) => {
@@ -31,20 +33,20 @@ const AddProductForm = () => {
 
   const handleFirstImageChange = (e) => {
     setFormData({ ...formData, firstImage: e.target.files[0] });
-  }
+  };
 
   const handleSecondImageChange = (e) => {
     setFormData({ ...formData, secondImage: e.target.files[0] });
-  }
+  };
 
   const handleThirdImageChange = (e) => {
     setFormData({ ...formData, thirdImage: e.target.files[0] });
-  }
+  };
 
   const insertProduct = async () => {
     try {
       // Retrieve user details from local storage
-      const storedUser = JSON.parse(localStorage.getItem('User'));
+      const storedUser = JSON.parse(localStorage.getItem("User"));
 
       if (storedUser) {
         // Use the user ID from the stored user details
@@ -55,32 +57,39 @@ const AddProductForm = () => {
         console.log(formData);
 
         const formDataToSend = new FormData();
-        formDataToSend.append('productReqDTO', JSON.stringify({
-          "productName": formData.productName,
-          "productDescription": formData.productDescription,
-          "productBrand": formData.productBrand,
-          "price": parseInt(formData.price),
-          "postedDate": formData.postedDate,
-          "categoryId": parseInt(formData.categoryId),
-          "userId": parseInt(formData.userId),
-        }));
+        formDataToSend.append(
+          "productReqDTO",
+          JSON.stringify({
+            productName: formData.productName,
+            productDescription: formData.productDescription,
+            productBrand: formData.productBrand,
+            price: parseInt(formData.price),
+            postedDate: formData.postedDate,
+            categoryId: parseInt(formData.categoryId),
+            userId: parseInt(formData.userId),
+          })
+        );
         formDataToSend.append("firstImage", formData.firstImage);
         formDataToSend.append("secondImage", formData.secondImage);
         formDataToSend.append("thirdImage", formData.thirdImage);
 
         try {
-          const response = await axios.post(`http://localhost:8080/swapkart/products/add`, formDataToSend, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
+          const response = await axios.post(
+            `http://localhost:8080/swapkart/products/add`,
+            formDataToSend,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
             }
-          });
+          );
           console.log(response);
           navigate("/MyProducts");
         } catch (error) {
           console.log("Error submitting the form : " + error);
         }
       } else {
-        console.error('User details not found in local storage.');
+        console.error("User details not found in local storage.");
       }
     } catch (error) {
       console.error("Error inserting the product : " + error);
@@ -100,7 +109,7 @@ const AddProductForm = () => {
       userId: "",
       firstImage: "",
       secondImage: "",
-      thirdImage: ""
+      thirdImage: "",
     });
   };
 
@@ -115,7 +124,7 @@ const AddProductForm = () => {
           <h2>Add New Product</h2>
         </div>
         <div className="divider" />
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="p-2">
           <div className="form-group">
             <label htmlFor="productName">Product Name</label>
             <input
