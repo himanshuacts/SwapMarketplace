@@ -25,4 +25,7 @@ public interface ProductService {
 			MultipartFile thirdImage);
 
 	ApiResponse deleteProduct(Integer productId);
+	
+	void deleteAllProducts(Integer userId) ;
+
 }

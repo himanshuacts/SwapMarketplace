@@ -33,6 +33,9 @@ public class UserServiceImpl implements UserService {
 	private ObjectMapper objectMapper;
 	
 	@Autowired
+	private ProductService productService;
+	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@Override
@@ -79,9 +82,10 @@ public class UserServiceImpl implements UserService {
 		dto.setCityName(city.getCityName());
 		return dto;
 	}
-
+	
 	@Override
 	public ApiResponse deleteUserById(Integer userId) {
+		productService.deleteAllProducts(userId);
 		userRepository.deleteById(userId);
 		return new ApiResponse("User deleted successfully");
 	}
